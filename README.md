@@ -1,70 +1,127 @@
-# Getting Started with Create React App
+# wanttodev.com - ポートフォリオサイト
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+React と TypeScript を使用して構築された個人ポートフォリオサイトです。  
+[Create React App](https://github.com/facebook/create-react-app)をベースとして開発されています。
 
-## Available Scripts
+## プロジェクト概要
 
-In the project directory, you can run:
+このプロジェクトは、私の技術スキルと実績を紹介するためのポートフォリオサイトです。  
+モダンな Web 技術を活用し、レスポンシブデザインとユーザビリティを重視した設計となっています。
 
-### `npm start`
+## 技術スタック
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **フロントエンド**: React 19.1.1, TypeScript 5.9.2
+- **スタイリング**: Tailwind CSS 3.4.17
+- **ルーティング**: React Router DOM 7.9.1
+- **UI コンポーネント**: Radix UI
+- **アイコン**: Lucide React
+- **ビルドツール**: Create React App
+- **テスト**: Jest, React Testing Library
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## プロジェクト構成
 
-### `npm test`
+```
+src/
+├── components/          # 再利用可能なReactコンポーネント
+│   ├── blog/           # ブログ機能関連コンポーネント
+│   │   ├── templates/  # ブログ記事テンプレート
+│   │   └── ...         # その他のブログコンポーネント
+│   ├── Header.tsx      # ヘッダーコンポーネント
+│   ├── Footer.tsx      # フッターコンポーネント
+│   └── ...             # その他の共通コンポーネント
+├── pages/              # ページコンポーネント
+│   ├── Home.tsx        # トップページ
+│   ├── About.tsx       # 自己紹介ページ
+│   ├── Works.tsx       # 作品紹介ページ
+│   ├── Blog.tsx        # ブログ一覧ページ
+│   └── BlogDetail.tsx  # ブログ詳細ページ
+├── data/               # 静的データファイル
+│   ├── blog.ts         # ブログ記事データ
+│   ├── faq.ts          # FAQデータ
+│   └── main.ts         # メインデータ
+├── hooks/              # カスタムReactフック
+├── lib/                # ユーティリティ関数
+└── styles/             # スタイルファイル
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 主な機能
 
-### `npm run build`
+- **レスポンシブデザイン**: モバイル・タブレット・デスクトップに対応
+- **ブログ機能**: 動的なブログ記事表示とカテゴリ分類
+- **SEO 最適化**: メタタグと構造化データの実装
+- **アクセシビリティ**: WAI-ARIA 準拠の実装
+- **パフォーマンス最適化**: コード分割と遅延読み込み
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## セットアップ手順
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### 前提条件
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Node.js 16.0.0 以上
+- npm または yarn
 
-### `npm run eject`
+### インストール
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```bash
+# リポジトリのクローン
+git clone [リポジトリURL]
+cd wanttodev.com
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+# 依存関係のインストール
+npm install
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### 開発環境の起動
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```bash
+# 開発サーバーの起動
+npm start
+```
 
-## Learn More
+ブラウザで [http://localhost:3000](http://localhost:3000) にアクセスしてサイトを確認できます。
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## 利用可能なスクリプト
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+| コマンド        | 説明                                     |
+| --------------- | ---------------------------------------- |
+| `npm start`     | 開発サーバーを起動（ホットリロード対応） |
+| `npm test`      | テストスイートを実行                     |
+| `npm run build` | 本番用ビルドを作成                       |
+| `npm run eject` | Create React App の設定をカスタマイズ    |
 
-### Code Splitting
+## 開発における特徴
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### TypeScript の活用
 
-### Analyzing the Bundle Size
+- 型安全性の確保
+- 開発時のエラー検出
+- コードの可読性向上
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### コンポーネント設計
 
-### Making a Progressive Web App
+- 再利用可能なコンポーネントの作成
+- Props の型定義
+- カスタムフックの活用
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### スタイリング
 
-### Advanced Configuration
+- Tailwind CSS によるユーティリティファーストアプローチ
+- レスポンシブデザインの実装
+- ダークモード対応
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## パフォーマンス最適化
 
-### Deployment
+- React.lazy()を使用したコンポーネントの遅延読み込み
+- 画像の最適化
+- バンドルサイズの最適化
+- Web Vitals の監視
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## 今後の改善予定
 
-### `npm run build` fails to minify
+- [ ] ブログ記事の CMS 連携
+- [ ] 多言語対応
+- [ ] PWA 機能の追加
+- [ ] パフォーマンスのさらなる最適化
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## ライセンス
+
+このプロジェクトは MIT ライセンスの下で公開されています。
