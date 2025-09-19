@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Button } from "../components/Button";
 import { HeroSection } from "../components/HeroSection";
 import Cta from "../components/Cta";
+import { ContactForm } from "../components/ContactForm";
 import { useDocumentTitle } from "../hooks/useDocumentTitle";
 
 const Home: React.FC = () => {
@@ -84,6 +85,7 @@ const Home: React.FC = () => {
       </Link>
 
       <Cta />
+      <ContactForm />
     </div>
   );
 };
