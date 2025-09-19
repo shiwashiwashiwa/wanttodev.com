@@ -44,20 +44,35 @@ export const ContactForm: React.FC = () => {
       formDataToSend.append("company", formData.company || "");
       formDataToSend.append("message", formData.message);
 
-      // Netlify Formsに送信
+      console.log("送信データ:", Object.fromEntries(formDataToSend));
+
+      // Netlify Formsに送信（URLSearchParamsを使用）
+      const params = new URLSearchParams();
+      params.append("form-name", "contact");
+      params.append("name", formData.name);
+      params.append("email", formData.email);
+      params.append("company", formData.company || "");
+      params.append("message", formData.message);
+
       const response = await fetch("/", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: new URLSearchParams(formDataToSend as any).toString(),
+        body: params.toString(),
       });
+
+      console.log("レスポンスステータス:", response.status);
+      console.log("レスポンスOK:", response.ok);
 
       if (response.ok) {
         setSubmitStatus("success");
         setFormData({ name: "", email: "", company: "", message: "" });
       } else {
+        const errorText = await response.text();
+        console.error("エラーレスポンス:", errorText);
         setSubmitStatus("error");
       }
     } catch (error) {
+      console.error("送信エラー:", error);
       setSubmitStatus("error");
     } finally {
       setIsSubmitting(false);
