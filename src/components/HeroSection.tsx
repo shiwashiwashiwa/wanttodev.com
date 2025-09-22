@@ -1,10 +1,9 @@
 "use client";
 
-import { ArrowRight } from "lucide-react";
 import { useEffect, useRef } from "react";
 import { FadeInStagger } from "./FadeInStagger";
-import { Button } from "./Button";
-import { mainData } from "../data/main";
+// import { Button } from "./Button";
+// import { mainData } from "../data/main";
 
 export function HeroSection() {
   const videoRef1 = useRef<HTMLVideoElement>(null);
@@ -69,31 +68,21 @@ export function HeroSection() {
                      [&_span]:text-3xl [&_span]:sm:text-5xl [&_span]:lg:text-6xl [&_span]:text-yellow-300 [&_span]:font-bold"
         >
           <FadeInStagger delay={0} staggerDelay={200}>
-            <div>
-              貼るだけ、<span>空間が広告に。</span>
-            </div>
-            <div>
-              次世代<span className="px-2">{mainData.keyWords}</span>で
-            </div>
-            <div>広告・店舗集客に革新を。</div>
+            <div>I like making fun,</div>
+            <div>interactive</div>
+            <div>things with code.</div>
           </FadeInStagger>
         </h1>
 
         <div className="text-sm sm:text-lg lg:text-xl font-semibold !leading-loose !tracking-widest [&_span]:text-yellow-300 text-center md:text-start my-10 md:my-12 lg:my-14">
           <FadeInStagger delay={1000} staggerDelay={200}>
             <div>
-              視界を遮らず、空間と一体化する
-              <br className="xs:hidden" />
-              <span className="text-xl sm:text-2xl lg:text-3xl font-mincho px-1">
-                {mainData.keyWords}
-              </span>
-              。
+              Where creativity sparks curiosity and brings ideas to life.
             </div>
-            <div>国内最安値で圧倒的な集客を実現。</div>
           </FadeInStagger>
         </div>
 
-        <FadeInStagger delay={1500}>
+        {/* <FadeInStagger delay={1500}>
           <div className="flex justify-center md:justify-start">
             <a
               href={mainData.contact.url}
@@ -102,11 +91,10 @@ export function HeroSection() {
             >
               <Button>
                 無料相談・お申し込み
-                <ArrowRight className="h-4 w-4" />
               </Button>
             </a>
           </div>
-        </FadeInStagger>
+        </FadeInStagger> */}
       </div>
     </section>
   );
