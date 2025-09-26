@@ -6,7 +6,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   @apply text-gray-100;
-  /* [#FF35FF] */
+  /* ピンク[#FF35FF] */
 }
 
 main {
@@ -137,4 +137,21 @@ strong {
     opacity: 1;
     transform: translateX(0);
   }
+}
+
+.mySwiper .swiper-slide {
+  width: 25%;
+  height: 100%;
+  opacity: 0.3;
+}
+
+.mySwiper .swiper-slide-thumb-active {
+  opacity: 1;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
