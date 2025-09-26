@@ -23,7 +23,7 @@ export function BlogList({ post }: { post: Blog }) {
               {post.category.map((cat, index) => (
                 <span
                   key={index}
-                  className="bg-gray-300/20 text-yellow-300 font-bold !text-xs px-1.5 py-1 rounded mr-1.5"
+                  className="bg-gray-300/20 text-primary-400 font-bold !text-xs px-1.5 py-1 rounded mr-1.5"
                 >
                   {cat}
                 </span>
@@ -31,7 +31,7 @@ export function BlogList({ post }: { post: Blog }) {
             </p>
           </div>
 
-          <h3 className="text-base md:text-lg group-hover:text-yellow-400 transition-all text-start font-semibold mb-3 md:mb-5">
+          <h3 className="text-base md:text-lg group-hover:text-primary-400 transition-all text-start font-semibold mb-3 md:mb-5">
             {post.title}
           </h3>
 

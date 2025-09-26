@@ -31,7 +31,7 @@ export default function BlogDetail() {
     >
       {/* 記事の動的セクションをレンダリング */}
       {article.sections && (
-        <DynamicSections sections={article.sections} articleId={article.id} />
+        <DynamicSections sections={article.sections} articleId={article.id.toString()} />
       )}
     </BlogArticleLayout>
   );

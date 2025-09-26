@@ -42,7 +42,7 @@ export default function WorksDetail() {
               <li>
                 <Link
                   to="/"
-                  className="hover:text-yellow-300 transition-colors"
+                  className="hover:text-primary-400 transition-colors"
                 >
                   ホーム
                 </Link>
@@ -51,7 +51,7 @@ export default function WorksDetail() {
               <li>
                 <Link
                   to="/works"
-                  className="hover:text-yellow-300 transition-colors"
+                  className="hover:text-primary-400 transition-colors"
                 >
                   制作実績
                 </Link>
@@ -64,7 +64,7 @@ export default function WorksDetail() {
           <div className="max-w-4xl mx-auto">
             <div className="mb-12">
               <div className="flex justify-between items-start mb-4">
-                <span className="text-sm font-semibold text-yellow-300 bg-yellow-300/20 px-3 py-1 rounded-full">
+                <span className="text-sm font-semibold text-primary-400 bg-primary-500/20 px-3 py-1 rounded-full">
                   {work.category}
                 </span>
                 <span className="text-sm text-gray-400">{work.date}</span>
@@ -151,7 +151,7 @@ export default function WorksDetail() {
                         key={index}
                         className="flex items-center text-gray-300"
                       >
-                        <span className="w-2 h-2 bg-yellow-300 rounded-full mr-3 flex-shrink-0"></span>
+                        <span className="w-2 h-2 bg-primary-500 rounded-full mr-3 flex-shrink-0"></span>
                         {feature}
                       </li>
                     ))}
@@ -175,7 +175,7 @@ export default function WorksDetail() {
               </Link>
               <a
                 href={work.details.link}
-                className="bg-yellow-300 text-gray-900 px-8 py-3 rounded-lg font-semibold hover:bg-yellow-400 transition-colors text-center"
+                className="bg-primary-500 text-white px-8 py-3 rounded-lg font-semibold hover:bg-primary-600 transition-colors text-center"
               >
                 プロジェクトを見る
               </a>

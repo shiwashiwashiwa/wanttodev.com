@@ -44,19 +44,12 @@ export default function BasicAuth({
 
   return (
     <div className="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-50">
-      <div className="bg-gray-800 rounded-lg p-8 w-full max-w-md mx-4 border border-gray-700">
-        <div className="text-center mb-6">
-          <h2 className="text-2xl font-bold text-white mb-2">認証が必要です</h2>
-          <p className="text-gray-300">
-            制作実績ページにアクセスするには認証が必要です。
-          </p>
-        </div>
-
-        <form onSubmit={handleSubmit} className="space-y-4">
+      <div className="bg-white/5 rounded-lg p-8 md:p-12 w-full max-w-lg mx-4 border border-gray-600">
+        <form onSubmit={handleSubmit} className="space-y-4 md:space-y-10">
           <div>
             <label
               htmlFor="username"
-              className="block text-sm font-medium text-gray-300 mb-2"
+              className="block mb-2"
             >
               ユーザー名
             </label>
@@ -65,7 +58,7 @@ export default function BasicAuth({
               id="username"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
-              className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-300 focus:border-transparent"
+              className="w-full px-4 py-3 bg-gray-800 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
               placeholder="ユーザー名を入力"
               required
               disabled={isLoading}
@@ -75,7 +68,7 @@ export default function BasicAuth({
           <div>
             <label
               htmlFor="password"
-              className="block text-sm font-medium text-gray-300 mb-2"
+              className="block mb-2"
             >
               パスワード
             </label>
@@ -84,7 +77,7 @@ export default function BasicAuth({
               id="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-300 focus:border-transparent"
+              className="w-full px-4 py-3 bg-gray-800 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
               placeholder="パスワードを入力"
               required
               disabled={isLoading}
@@ -97,7 +90,7 @@ export default function BasicAuth({
             </div>
           )}
 
-          <div className="flex gap-3 pt-4">
+          <div className="flex justify-between gap-3 pt-4 md:pt-8">
             <Button
               type="button"
               variant="outline"

@@ -47,7 +47,10 @@ export const ContactForm: React.FC = () => {
     <section className="py-16">
       <div className="container max-w-3xl mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">お問い合わせ</h2>
+        <h2>
+              CONTACT
+              <span>お問い合わせ</span>
+            </h2>
           <p>ご質問やご相談がございましたら、お気軽にお問い合わせください。</p>
         </div>
 
@@ -95,7 +98,7 @@ export const ContactForm: React.FC = () => {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
                   placeholder="山田太郎"
                 />
               </div>
@@ -114,7 +117,7 @@ export const ContactForm: React.FC = () => {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
                   placeholder="example@email.com"
                 />
               </div>
@@ -133,7 +136,7 @@ export const ContactForm: React.FC = () => {
                 name="company"
                 value={formData.company}
                 onChange={handleChange}
-                className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
                 placeholder="株式会社サンプル"
               />
             </div>
@@ -152,7 +155,7 @@ export const ContactForm: React.FC = () => {
                 onChange={handleChange}
                 required
                 rows={6}
-                className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-vertical"
+                className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent resize-vertical"
                 placeholder="お問い合わせ内容をご記入ください"
               />
             </div>

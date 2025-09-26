@@ -15,12 +15,12 @@ export default function About() {
           <div className="max-w-4xl mx-auto">
             <div className="bg-gray-800/80 backdrop-blur-sm p-8 md:p-12 rounded-lg mb-12 border border-gray-700">
               <div className="text-center mb-8">
-                <div className="w-32 h-32 mx-auto mb-6 bg-gradient-to-br from-yellow-300 to-orange-400 rounded-full flex items-center justify-center">
+                <div className="w-32 h-32 mx-auto mb-6 bg-gradient-to-br from-primary-400 to-primary-600 rounded-full flex items-center justify-center">
                   <span className="text-4xl md:text-5xl font-bold text-gray-800">
                     M
                   </span>
                 </div>
-                <h3 className="text-2xl md:text-3xl font-bold text-yellow-300 mb-4">
+                <h3 className="text-2xl md:text-3xl font-bold text-primary-400 mb-4">
                   開発者・デザイナー
                 </h3>
                 <p className="text-lg">
@@ -30,7 +30,7 @@ export default function About() {
 
               <div className="space-y-6">
                 <div>
-                  <h4 className="text-xl font-semibold text-yellow-300 mb-3">
+                  <h4 className="text-xl font-semibold text-primary-400 mb-3">
                     経歴
                   </h4>
                   <ul className="space-y-2 ml-4">
@@ -42,7 +42,7 @@ export default function About() {
                 </div>
 
                 <div>
-                  <h4 className="text-xl font-semibold text-yellow-300 mb-3">
+                  <h4 className="text-xl font-semibold text-primary-400 mb-3">
                     スキル
                   </h4>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -78,7 +78,7 @@ export default function About() {
                 </div>
 
                 <div>
-                  <h4 className="text-xl font-semibold text-yellow-300 mb-3">
+                  <h4 className="text-xl font-semibold text-primary-400 mb-3">
                     趣味・興味
                   </h4>
                   <p>

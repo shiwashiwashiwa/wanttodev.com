@@ -47,7 +47,7 @@ export const CategoryList = ({ articles }: CategoryListProps) => {
 
   return (
     <div className="space-y-6">
-      <h5 className="text-sm md:text-lg !font-semibold font-mincho !text-yellow-300 !mb-0">
+      <h5 className="text-sm md:text-lg !font-semibold font-mincho !text-primary-400 !mb-0">
         カテゴリ
       </h5>
 
@@ -62,7 +62,7 @@ export const CategoryList = ({ articles }: CategoryListProps) => {
             }
             className="flex items-center justify-between group hover:bg-white/10 transition-colors duration-300 p-3"
           >
-            <span className=" group-hover:text-yellow-300 transition-colors duration-300">
+            <span className=" group-hover:text-primary-400 transition-colors duration-300">
               {category.name}
             </span>
             <span className="text-gray-400 text-sm bg-gray-300/10 px-2 py-0.5 rounded-full">

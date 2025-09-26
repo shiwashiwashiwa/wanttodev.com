@@ -16,7 +16,7 @@ export function HeroSection() {
             </FadeInStagger>
           </h1>
 
-          <div className="text-sm sm:text-lg lg:text-xl font-semibold !leading-loose !tracking-widest [&_span]:text-yellow-300 my-10 md:my-12 lg:my-14">
+          <div className="text-sm sm:text-lg lg:text-xl font-semibold !leading-loose !tracking-widest [&_span]:text-primary-400 my-10 md:my-12 lg:my-20">
             <FadeInStagger delay={1000} staggerDelay={200}>
               <div>
                 Where creativity sparks curiosity and brings ideas to life.

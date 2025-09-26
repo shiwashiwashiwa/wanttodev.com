@@ -31,7 +31,7 @@ export default function BlogPage() {
           {selectedCategory && (
             <div className="mb-8">
               <div className="bg-white/10 backdrop-blur-sm p-4 rounded-lg inline-block">
-                <p className="text-yellow-300 font-semibold">
+                <p className="text-primary-400 font-semibold">
                   カテゴリ: {selectedCategory}
                   <span className="ml-2 text-gray-400">
                     ({filteredPosts.length}件)

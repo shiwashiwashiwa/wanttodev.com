@@ -15,6 +15,27 @@ module.exports = {
       "2xl": "1536px",
     },
     extend: {
+      colors: {
+        primary: {
+          50: '#fef7ff',
+          100: '#fdeeff',
+          200: '#fbd9ff',
+          300: '#f8b5ff',
+          400: '#f382ff',
+          500: '#FF35FF', // メインカラー
+          600: '#e51de5',
+          700: '#c814c8',
+          800: '#a512a5',
+          900: '#871487',
+          950: '#5a0a5a',
+        },
+        accent: {
+          pink: '#FF35FF',
+          'pink-light': '#FF6BFF',
+          'pink-dark': '#CC2ACC',
+          'pink-soft': '#FFB5FF',
+        }
+      },
       fontFamily: {
         mincho: [
           '"Hiragino Mincho Pro"',
