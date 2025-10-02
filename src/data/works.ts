@@ -53,6 +53,9 @@ export interface Works {
   id: number;
   title: string;
   date: string; // YYYY.MM 形式
+  role: string; // 役割
+  client: string; // クライアント
+  industry: string; // 業種
   technologies: Technology[];
   category: WorkCategory[];
   thumbnail?: string; // サムネイル画像のパス（自動生成される）
@@ -80,6 +83,9 @@ export function validateWorksData(data: any): data is Works {
     typeof data.id === "number" &&
     typeof data.title === "string" &&
     typeof data.date === "string" &&
+    typeof data.role === "string" &&
+    typeof data.client === "string" &&
+    typeof data.industry === "string" &&
     Array.isArray(data.technologies) &&
     Array.isArray(data.category) &&
     // thumbnailは自動生成されるため、バリデーションから除外

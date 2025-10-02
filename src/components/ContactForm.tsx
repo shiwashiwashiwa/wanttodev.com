@@ -47,11 +47,15 @@ export const ContactForm: React.FC = () => {
     <section className="py-16">
       <div className="container max-w-3xl mx-auto px-4">
         <div className="text-center mb-12 md:mb-16">
-        <h2>
-              CONTACT
-              <span>お問い合わせ</span>
-            </h2>
-          <p>ご質問やご相談がございましたら、<br className="xs:hidden"/>お気軽にお問い合わせください。</p>
+          <h2>
+            CONTACT
+            <span>お問い合わせ</span>
+          </h2>
+          <p>
+            ご質問やご相談がございましたら、
+            <br className="xs:hidden" />
+            お気軽にお問い合わせください。
+          </p>
         </div>
 
         <div className="bg-transparent border border-white/40 p-8 xs:p-10 md:p-16">
@@ -79,16 +83,15 @@ export const ContactForm: React.FC = () => {
               <input type="hidden" name="form-name" value="contact" />
               <div style={{ display: "none" }}>
                 <label>
-                  Don't fill this out if you're human: <input name="bot-field" />
+                  Don't fill this out if you're human:
+                  <input name="bot-field" />
                 </label>
               </div>
 
               <div className="grid md:grid-cols-2 gap-4">
                 <div>
-                  <label
-                    htmlFor="name"
-                  >
-                    お名前 <span className="text-red-400">*</span>
+                  <label htmlFor="name">
+                    お名前 <span className="text-primary-500">*</span>
                   </label>
                   <input
                     type="text"
@@ -103,10 +106,8 @@ export const ContactForm: React.FC = () => {
                 </div>
 
                 <div>
-                  <label
-                    htmlFor="email"
-                  >
-                    メールアドレス <span className="text-red-400">*</span>
+                  <label htmlFor="email">
+                    メールアドレス <span className="text-primary-500">*</span>
                   </label>
                   <input
                     type="email"
@@ -122,11 +123,7 @@ export const ContactForm: React.FC = () => {
               </div>
 
               <div>
-                <label
-                  htmlFor="company"
-                >
-                  会社名・団体名
-                </label>
+                <label htmlFor="company">会社名・団体名</label>
                 <input
                   type="text"
                   id="company"
@@ -139,10 +136,8 @@ export const ContactForm: React.FC = () => {
               </div>
 
               <div>
-                <label
-                  htmlFor="message"
-                >
-                  お問い合わせ内容 <span className="text-red-400">*</span>
+                <label htmlFor="message">
+                  お問い合わせ内容 <span className="text-primary-500">*</span>
                 </label>
                 <textarea
                   id="message"
@@ -167,7 +162,6 @@ export const ContactForm: React.FC = () => {
               </Button>
             </div>
           </form>
-
         </div>
       </div>
     </section>

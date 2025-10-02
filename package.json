@@ -26,7 +26,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "watch-works": "node scripts/watch-works-data.js",
-    "sync-works": "node scripts/sync-works-data.js"
+    "sync-works": "node scripts/sync-works-data.js",
+    "update-videos": "node scripts/check-video-files.js"
   },
   "eslintConfig": {
     "extends": [

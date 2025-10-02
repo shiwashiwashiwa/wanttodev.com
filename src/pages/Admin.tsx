@@ -27,6 +27,9 @@ export default function Admin() {
   const [formData, setFormData] = useState<Partial<Works>>({
     title: "",
     date: "",
+    role: "",
+    client: "",
+    industry: "",
     technologies: [],
     category: [],
     // thumbnail: "", // 自動生成されるため削除
@@ -181,6 +184,9 @@ export default function Admin() {
       id: workId,
       title: formData.title || "",
       date: formData.date || "",
+      role: formData.role || "",
+      client: formData.client || "",
+      industry: formData.industry || "",
       technologies: formData.technologies || [],
       category: formData.category || [],
       thumbnail: `/images/works/${workId}/thumbnail.webp`, // 自動生成
@@ -218,6 +224,9 @@ export default function Admin() {
     setFormData({
       title: "",
       date: "",
+      role: "",
+      client: "",
+      industry: "",
       technologies: [],
       category: [],
       thumbnail: "",
@@ -256,6 +265,9 @@ export default function Admin() {
     setFormData({
       title: "",
       date: "",
+      role: "",
+      client: "",
+      industry: "",
       technologies: [],
       category: [],
       thumbnail: "",
@@ -408,6 +420,50 @@ export default function Admin() {
                     required
                   />
                 </div>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <label className="block text-sm font-medium mb-2">役割</label>
+                  <input
+                    type="text"
+                    value={formData.role || ""}
+                    onChange={(e) => handleInputChange("role", e.target.value)}
+                    className="w-full p-3 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                    placeholder="フルスタック開発"
+                    required
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium mb-2">
+                    クライアント
+                  </label>
+                  <input
+                    type="text"
+                    value={formData.client || ""}
+                    onChange={(e) =>
+                      handleInputChange("client", e.target.value)
+                    }
+                    className="w-full p-3 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                    placeholder="株式会社サンプル"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium mb-2">業種</label>
+                <input
+                  type="text"
+                  value={formData.industry || ""}
+                  onChange={(e) =>
+                    handleInputChange("industry", e.target.value)
+                  }
+                  className="w-full p-3 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                  placeholder="IT・Web"
+                  required
+                />
               </div>
 
               <div>

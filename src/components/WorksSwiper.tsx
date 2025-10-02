@@ -26,7 +26,10 @@ export default function WorksSwiper() {
     return <div>作品が見つかりません</div>;
   }
 
-  const mediaList = [...work.mediaData.videos, ...work.mediaData.images];
+  const mediaList = [
+    ...(work.mediaData.videos || []),
+    ...work.mediaData.images,
+  ];
   return (
     <>
       <Swiper
