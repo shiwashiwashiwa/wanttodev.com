@@ -43,6 +43,11 @@ export const routeConfigs: RouteConfig[] = [
     title: "管理画面",
     description: "作品データの管理",
   },
+  {
+    path: "/lab",
+    title: "ラボ",
+    description: "実験的なコンテンツやデモ",
+  },
 ];
 
 /**
