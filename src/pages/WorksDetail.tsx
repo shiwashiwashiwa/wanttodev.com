@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { Button } from "../components/Button";
 import Cta from "../components/Cta";
@@ -6,11 +6,69 @@ import WorksSwiper from "../components/WorksSwiper";
 import { useWorksData } from "../hooks/useWorksData";
 import { formatDate } from "../lib/utils";
 
+// ワイヤーフレーム画像を自動生成する関数
+const generateWireImages = (workId: number, workTitle: string) => {
+  const wireImages = [];
+  let index = 1;
+
+  // 最大10個まで検索（wire01.webp から wire10.webp まで）
+  while (index <= 10) {
+    const wireNumber = index.toString().padStart(2, "0");
+    const imagePath = `/images/works/${workId}/wire${wireNumber}.webp`;
+
+    wireImages.push({
+      type: "image" as const,
+      src: imagePath,
+      alt: `${workTitle} - Wireframe ${index}`,
+    });
+
+    index++;
+  }
+
+  return wireImages;
+};
+
+// 画像の存在を確認する関数
+const checkImageExists = (src: string): Promise<boolean> => {
+  return new Promise((resolve) => {
+    const img = new Image();
+    img.onload = () => resolve(true);
+    img.onerror = () => resolve(false);
+    img.src = src;
+  });
+};
+
 export default function WorksDetail() {
   const { id } = useParams<{ id: string }>();
   const { getWork } = useWorksData();
   const workId = id ? parseInt(id, 10) : 0;
   const work = getWork(workId);
+  const [wireImages, setWireImages] = useState<
+    Array<{ type: "image"; src: string; alt: string }>
+  >([]);
+
+  // ワイヤーフレーム画像の存在確認
+  useEffect(() => {
+    if (work) {
+      const generatedWireImages = generateWireImages(work.id, work.title);
+
+      // 各画像の存在を確認
+      const checkImages = async () => {
+        const existingImages = [];
+        for (const wireImg of generatedWireImages) {
+          const exists = await checkImageExists(wireImg.src);
+          if (exists) {
+            existingImages.push(wireImg);
+          }
+        }
+        setWireImages(existingImages);
+      };
+
+      checkImages();
+    } else {
+      setWireImages([]);
+    }
+  }, [work]);
 
   if (!work) {
     return (
@@ -124,18 +182,20 @@ export default function WorksDetail() {
           </div>
 
           {/* wire image */}
-          <div className="flex flex-row gap-2 md:gap-10">
-            {work.mediaData.wireImages.map((wireImg, index) => (
-              <div key={index}>
-                <img
-                  src={wireImg.src}
-                  className="object-cover"
-                  alt={wireImg.alt || `${work.title} - Wireframe ${index + 1}`}
-                />
-                <p>ワイヤーフレーム</p>
-              </div>
-            ))}
-          </div>
+          {wireImages.length > 0 && (
+            <div className="flex flex-row gap-2 md:gap-10">
+              {wireImages.map((wireImg, index) => (
+                <div key={index}>
+                  <img
+                    src={wireImg.src}
+                    className="object-cover"
+                    alt={wireImg.alt}
+                  />
+                  <p>ワイヤーフレーム</p>
+                </div>
+              ))}
+            </div>
+          )}
 
           <div className="flex flex-col md:flex-row gap-8 md:gap-20">
             <h3 className="md:w-1/6 text-primary-500 text-nowrap">

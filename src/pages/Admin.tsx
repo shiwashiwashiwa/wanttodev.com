@@ -44,7 +44,6 @@ export default function Admin() {
     mediaData: {
       images: [],
       videos: [],
-      wireImages: [],
     },
     isVisible: true,
   });
@@ -202,7 +201,6 @@ export default function Admin() {
       mediaData: {
         images: formData.mediaData?.images || [],
         videos: formData.mediaData?.videos || [],
-        wireImages: formData.mediaData?.wireImages || [],
       },
       isVisible: formData.isVisible ?? true,
       createdAt: editingWork?.createdAt || new Date().toISOString(),
@@ -245,7 +243,6 @@ export default function Admin() {
       mediaData: {
         images: [],
         videos: [],
-        wireImages: [],
       },
       isVisible: true,
     });
@@ -286,7 +283,6 @@ export default function Admin() {
       mediaData: {
         images: [],
         videos: [],
-        wireImages: [],
       },
       isVisible: true,
     });
@@ -731,17 +727,6 @@ export default function Admin() {
                     })
                   }
                 />
-
-                <ImageUpload
-                  label="ワイヤーフレーム画像"
-                  value={formData.mediaData?.wireImages || []}
-                  onChange={(wireImages) =>
-                    handleInputChange("mediaData", {
-                      ...formData.mediaData,
-                      wireImages,
-                    })
-                  }
-                />
               </div>
 
               <div className="flex items-center">
@@ -826,38 +811,6 @@ export default function Admin() {
               </div>
             </div>
           ))}
-        </div>
-
-        {/* ファイル更新のヘルプ */}
-        <div className="bg-blue-900/20 border border-blue-500/30 rounded-lg p-4 mt-8">
-          <h4 className="text-lg font-semibold text-blue-300 mb-2">
-            📁 データ保存について
-          </h4>
-          <div className="text-sm text-blue-200 space-y-2">
-            <p>
-              <strong>データの保存場所:</strong>{" "}
-              <code className="bg-gray-700 px-2 py-1 rounded">
-                src/data/works-dynamic.json
-              </code>
-            </p>
-            <p>データを変更すると、以下の手順でファイルが自動更新されます：</p>
-            <ol className="list-decimal list-inside space-y-1 ml-4">
-              <li>
-                プロジェクト内の <code>src/data/works-dynamic.json</code>{" "}
-                が自動更新されます
-              </li>
-              <li>コンソールにJSONデータが表示されます（バックアップ用）</li>
-              <li>データがクリップボードにコピーされます（可能な場合）</li>
-            </ol>
-            <p className="text-blue-300">
-              💡
-              手動でファイルを更新したい場合は「ファイルをリアルタイム更新」ボタンを使用してください
-            </p>
-            <p className="text-yellow-300 text-xs">
-              ⚠️
-              ブラウザの制限により、完全な自動更新ができない場合はコンソールに表示されたデータを手動でコピーしてください
-            </p>
-          </div>
         </div>
 
         <div className="text-center mt-8">

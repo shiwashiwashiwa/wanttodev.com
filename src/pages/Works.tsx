@@ -91,12 +91,12 @@ export default function Works() {
         </div>
 
         <div>
-          <div className="flex flex-wrap gap-2 md:gap-4 mb-16 md:mb-20">
+          <div className="flex flex-wrap gap-2 md:gap-3 mb-16 md:mb-20">
             {["すべて", ...allCategories].map((category) => (
               <button
                 key={category}
                 onClick={() => setSelectedCategory(category)}
-                className={`text-xs md:text-sm px-3 md:px-6 py-1 md:py-2 rounded-full transition-colors ${
+                className={`text-xs md:text-sm px-3 md:px-5 py-1 md:py-1.5 rounded-full transition-colors ${
                   selectedCategory === category
                     ? "bg-primary-500 hover:bg-primary-600"
                     : "bg-gray-700 text-gray-300 hover:bg-gray-600"
@@ -115,7 +115,7 @@ export default function Works() {
               </p>
             </div>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 md:gap-8 mb-28 md:mb-40">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 md:gap-10 mb-28 md:mb-40">
               {works
                 .filter(
                   (work) =>
@@ -128,7 +128,7 @@ export default function Works() {
                     to={`/works/${work.id}`}
                     className="backdrop-blur-sm overflow-hidden transition-all duration-300 group block"
                   >
-                    <div className="mb-4 aspect-[8/5] overflow-hidden rounded-lg">
+                    <div className="mb-4 aspect-[8/5] overflow-hidden">
                       <img
                         src={`/images/works/${work.id}/thumbnail.webp`}
                         alt={work.title}
@@ -137,12 +137,12 @@ export default function Works() {
                     </div>
 
                     <div>
-                      <div className="mb-3">
+                      <div className="mb-1">
                         <div className="flex flex-wrap gap-2">
                           {work.category.map((cat, index) => (
                             <span
                               key={index}
-                              className="text-xs text-primary-500 border-b border-transparent hover:border-primary-500 cursor-pointer"
+                              className="text-xs md:text-sm text-primary-500 border-b border-transparent hover:border-primary-500 cursor-pointer"
                               onClick={(e) => {
                                 e.preventDefault();
                                 e.stopPropagation();
@@ -164,7 +164,7 @@ export default function Works() {
             </div>
           )}
 
-          <div className="text-center">
+          <div className="text-center mb-16 md:mb-20">
             <Link to="/">
               <Button variant="outline">Back to TOP</Button>
             </Link>

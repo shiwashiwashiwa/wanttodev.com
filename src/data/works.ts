@@ -70,7 +70,6 @@ export interface Works {
   mediaData: {
     images: MediaItem[];
     videos: MediaItem[];
-    wireImages: MediaItem[];
   };
   isVisible: boolean;
   createdAt?: string;
@@ -100,8 +99,6 @@ export function validateWorksData(data: any): data is Works {
     Array.isArray(data.mediaData.images) &&
     (Array.isArray(data.mediaData.videos) ||
       data.mediaData.videos === undefined) &&
-    (Array.isArray(data.mediaData.wireImages) ||
-      data.mediaData.wireImages === undefined) &&
     typeof data.isVisible === "boolean"
   );
 }

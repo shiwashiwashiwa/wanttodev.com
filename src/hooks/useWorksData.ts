@@ -36,7 +36,6 @@ export function useWorksData() {
             mediaData: {
               images: data.mediaData?.images || [],
               videos: data.mediaData?.videos || [],
-              wireImages: data.mediaData?.wireImages || [],
             },
           }));
           const validData = normalizedData.filter(validateWorksData);

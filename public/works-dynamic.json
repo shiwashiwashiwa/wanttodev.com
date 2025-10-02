@@ -68,18 +68,6 @@
           "src": "/images/works/1/video02.mp4",
           "alt": "作品1の動画02"
         }
-      ],
-      "wireImages": [
-        {
-          "type": "image",
-          "src": "/images/works/1/wire01.webp",
-          "alt": "中古外車の販売・レンタルサイト - Wireframe"
-        },
-        {
-          "type": "image",
-          "src": "/images/works/1/wire02.webp",
-          "alt": "中古外車の販売・レンタルサイト - Wireframe"
-        }
       ]
     },
     "isVisible": true,
@@ -125,8 +113,7 @@
       "link": "https://www.7noyu.jp/"
     },
     "mediaData": {
-      "images": [],
-      "wireImages": []
+      "images": []
     },
     "isVisible": true,
     "createdAt": "2025-09-30T16:41:32.871Z",
@@ -170,8 +157,7 @@
       "link": "https://skinmake.info/"
     },
     "mediaData": {
-      "images": [],
-      "wireImages": []
+      "images": []
     },
     "isVisible": true,
     "createdAt": "2025-09-30T16:41:32.871Z",
@@ -212,8 +198,7 @@
       "link": "https://multi-balm.skinmake.info/?_gl=1*1g7yxsp*_ga*MjEzNzQ4MTU5NC4xNzU5Mjk4MjEw*_ga_57H14JR0JL*czE3NTkyOTgyMDkkbzEkZzEkdDE3NTkyOTkwNzkkajM5JGwwJGgw"
     },
     "mediaData": {
-      "images": [],
-      "wireImages": []
+      "images": []
     },
     "isVisible": true,
     "createdAt": "2025-09-30T16:41:32.871Z",
@@ -256,8 +241,7 @@
       "link": "https://fukuoka-ast.com/lp/"
     },
     "mediaData": {
-      "images": [],
-      "wireImages": []
+      "images": []
     },
     "isVisible": true,
     "createdAt": "2025-09-30T16:41:32.871Z",
@@ -309,8 +293,7 @@
       "link": "https://andpolite.com/"
     },
     "mediaData": {
-      "images": [],
-      "wireImages": []
+      "images": []
     },
     "isVisible": true,
     "createdAt": "2025-09-30T16:41:32.871Z",
@@ -363,8 +346,100 @@
       "link": "https://andpolite.com/"
     },
     "mediaData": {
-      "images": [],
-      "wireImages": []
+      "images": []
+    },
+    "isVisible": true,
+    "createdAt": "2025-09-30T16:41:32.871Z",
+    "updatedAt": "2025-09-30T17:01:52.625Z"
+  },
+  {
+    "id": 8,
+    "title": "税理士事務所 サービスサイト",
+    "date": "2024.3",
+    "role": "ブランディング",
+    "client": "NEOTOP株式会社",
+    "industry": "税理士事務所",
+    "technologies": [
+      "PHP",
+      "MySQL",
+      "JavaScript",
+      "HTML",
+      "CSS",
+      "Adobe XD",
+      "Stripe"
+    ],
+    "category": ["ランディングページ"],
+    "details": {
+      "overview": [
+        "税理士事務所様より、個人事業主向けの「確定申告丸投げサービス」を訴求するランディングページを制作いたしました。",
+        "煩雑な確定申告業務を専門家に任せられる安心感を前面に打ち出し、信頼性と利便性を強調したデザイン・構成を採用しました。"
+      ],
+      "challenge": [
+        "既存のサービス案内は事務所サイト内に簡単に記載されているのみで、ターゲットとなる個人事業主に十分にアプローチできていませんでした。",
+        "また、「誰でも安心して依頼できる」というサービスの強みが伝わりにくく、問い合わせや申し込みに直結していない状況でした。"
+      ],
+      "solution": [
+        "サービス内容を「丸投げできる手軽さ」と「税理士による信頼感」に整理して訴求",
+        "流れを図解でわかりやすく表現し、初めて利用する方の不安を解消",
+        "CV（コンバージョン）ボタンや問い合わせ導線を複数箇所に設置し、コンバージョンを最大化",
+        "サービスの雰囲気に合わせた配色や写真税理士事務所としての実績・信頼性を補強するセクションを設け、信頼獲得につなげた演出で、安心感・信頼感を高める構成に"
+      ],
+      "result": [
+        "公開後は広告流入との相性が良く、従来に比べて問い合わせ件数が増加しました。",
+        "特に「面倒な作業を任せられる安心感」を訴求したことで、個人事業主やフリーランス層からの反響が大きく、サービスの新規契約数増加に貢献しました。"
+      ],
+      "features": ["レスポンシブデザイン対応", "SEO最適化"],
+      "link": "https://sakutto-kakushin.com/"
+    },
+    "mediaData": {
+      "images": []
+    },
+    "isVisible": true,
+    "createdAt": "2025-09-30T16:41:32.871Z",
+    "updatedAt": "2025-09-30T17:01:52.625Z"
+  },
+  {
+    "id": 9,
+    "title": "税理士事務所 サービスサイト",
+    "date": "2024.5",
+    "role": "ブランディング",
+    "client": "スキルシェア合同会社",
+    "industry": "税理士事務所",
+    "technologies": [
+      "PHP",
+      "MySQL",
+      "JavaScript",
+      "HTML",
+      "CSS",
+      "Adobe XD",
+      "Stripe"
+    ],
+    "category": ["ランディングページ"],
+    "details": {
+      "overview": [
+        "税理士事務所様が提供する、フリーランス・個人事業主向け「社会保険加入サービス」のランディングページを制作いたしました。",
+        "本サービスは、登記の必要がなく、会社役員として登録するだけで簡単に社会保険へ加入できる仕組みを提供しており、その利便性と安心感を訴求する構成とデザインを採用しました。"
+      ],
+      "challenge": [
+        "既存のサイトではサービス内容が複雑に感じられ、ターゲット層であるフリーランスや個人事業主がメリットを直感的に理解しにくい状況でした。",
+        "また、社会保険の仕組み自体に難しさがあり、不安を抱えたまま利用を検討するユーザーが多く、問い合わせにつながりにくいという課題がありました。"
+      ],
+      "solution": [
+        "サービスの流れを「3ステップ」で視覚的に整理し、利用の簡単さを強調",
+        "「登記不要」「役員登録だけ」という特徴をキャッチコピーとして前面に配置",
+        "社会保険加入のメリット（保障内容・節税効果など）を図解でわかりやすく表現",
+        "CVボタンをファーストビューと各セクション末に設置し、スムーズな問い合わせ導線を実現",
+        "FAQを充実させ、制度に関する不安を払拭"
+      ],
+      "result": [
+        "公開後は広告流入との相性が良く、従来に比べて資料請求・問い合わせ件数が増加しました。",
+        "特に「簡単・安心」という訴求ポイントがフリーランス層に響き、サービスの認知度向上と新規顧客獲得につながりました。"
+      ],
+      "features": ["レスポンシブデザイン対応", "SEO最適化"],
+      "link": "https://shahho.net/"
+    },
+    "mediaData": {
+      "images": []
     },
     "isVisible": true,
     "createdAt": "2025-09-30T16:41:32.871Z",
