@@ -44,6 +44,7 @@ export const otherSkills: Skill[] = [
   { name: "microCMS", image: "microCMS_dark.svg", isSquare: false },
   { name: "Netlify", image: "netlify-dark.svg", isSquare: false },
   { name: "Vercel", image: "vercel-dark.svg", isSquare: false },
+  { name: "Stripe", image: "" },
   //   { name: "Docker", image: "" },
   //   { name: "AWS", image: "" },
   //   { name: "CI/CD", image: "" },

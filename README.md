@@ -61,6 +61,7 @@ wanttodev.com/
 │   │   ├── Footer.tsx       # フッター
 │   │   ├── Header.tsx       # ヘッダー
 │   │   ├── HeroSection.tsx  # ヒーローセクション
+│   │   ├── ImageUpload.tsx  # 画像アップロード
 │   │   ├── ScrollToTop.tsx  # スクロールトップ
 │   │   ├── SkillItem.tsx    # スキルアイテム
 │   │   ├── VideoScrollAnimation.tsx # 動画スクロール
@@ -71,6 +72,7 @@ wanttodev.com/
 │   │   ├── Blog.tsx         # ブログ一覧ページ
 │   │   ├── BlogDetail.tsx   # ブログ詳細ページ
 │   │   ├── Home.tsx         # トップページ
+│   │   ├── Lab.tsx          # ラボページ
 │   │   ├── PrivacyPolicy.tsx # プライバシーポリシー
 │   │   ├── Works.tsx        # 作品紹介ページ
 │   │   └── WorksDetail.tsx  # 作品詳細ページ
@@ -80,7 +82,7 @@ wanttodev.com/
 │   │   ├── main.ts          # メインデータ（静的）
 │   │   ├── skills.ts        # スキルデータ（静的）
 │   │   ├── works.ts         # 作品データ（静的・初期データ）
-│   │   └── works-dynamic.json # 作品データ（動的・新規追加分）
+│   │   └── works-dynamic.ts # 作品データ（動的・新規追加分）
 │   ├── hooks/               # カスタムReactフック
 │   │   ├── useAuth.ts       # 認証フック
 │   │   ├── useDocumentTitle.ts # ドキュメントタイトル
@@ -143,8 +145,8 @@ npm install
 
 ```bash
 # 認証設定（Worksページ用）
-REACT_APP_AUTH_USERNAME=user01
-REACT_APP_AUTH_PASSWORD=Dp7QCkKR
+REACT_APP_AUTH_USERNAME
+REACT_APP_AUTH_PASSWORD
 
 ```
 
@@ -157,8 +159,6 @@ REACT_APP_AUTH_PASSWORD=Dp7QCkKR
 npm start
 ```
 
-ブラウザで [http://localhost:3000](http://localhost:3000) にアクセスしてサイトを確認できます。
-
 ## データ管理システム
 
 ### ファイル構造
@@ -168,16 +168,16 @@ npm start
 ```
 src/data/
 ├── works.ts              # 初期データ（静的・変更不可）
-└── works-dynamic.json    # 動的データ（管理画面で追加・編集可能）
+└── works-dynamic.ts      # 動的データ（管理画面で追加・編集可能）
 ```
 
 ### データの保存場所
 
-| データ種別         | ファイル                      | 説明                             |
-| ------------------ | ----------------------------- | -------------------------------- |
-| **初期データ**     | `src/data/works.ts`           | プロジェクトに含まれる静的データ |
-| **新規追加データ** | `src/data/works-dynamic.json` | 管理画面で追加された動的データ   |
-| **フォールバック** | ブラウザローカルストレージ    | 一時的な保存場所                 |
+| データ種別         | ファイル                    | 説明                             |
+| ------------------ | --------------------------- | -------------------------------- |
+| **初期データ**     | `src/data/works.ts`         | プロジェクトに含まれる静的データ |
+| **新規追加データ** | `src/data/works-dynamic.ts` | 管理画面で追加された動的データ   |
+| **フォールバック** | ブラウザローカルストレージ  | 一時的な保存場所                 |
 
 ### ファイル監視と自動同期
 
@@ -187,7 +187,7 @@ src/data/
 npm run watch-works
 ```
 
-- `src/data/works-dynamic.json`の変更を監視
+- `src/data/works-dynamic.ts`の変更を監視
 - 変更を検知すると自動で`public/works-dynamic.json`に同期
 - 開発中は常に実行しておくことを推奨
 
@@ -217,7 +217,7 @@ npm run sync-works
 ```
 1. ローカルストレージに即座に保存（UI更新）
    ↓（同時実行）
-2. works-dynamic.json への保存を試行
+2. works-dynamic.ts への保存を試行
    ↓（ブラウザ制限により手動更新が必要）
 3. コンソールにJSONデータを出力
 ```
@@ -245,13 +245,13 @@ fetch("/src/scripts/migrateData.js")
   .then((script) => eval(script));
 ```
 
-3. ダウンロードされた `works-dynamic.json` を `src/data/` フォルダに配置
+3. ダウンロードされた `works-dynamic.json` を `src/data/` フォルダに配置し、`works-dynamic.ts` として保存
 
 ### 注意事項
 
 - **ブラウザ制限**: ブラウザ環境では直接ファイルシステムに書き込めないため、実際のファイル更新は手動で行う必要があります
 - **本番環境**: 本番環境では、サーバーサイドの API を使用してファイル操作を行うことを推奨します
-- **データ整合性**: データの変更時は、コンソールに表示される JSON データを `works-dynamic.json` にコピーしてください
+- **データ整合性**: データの変更時は、コンソールに表示される JSON データを `works-dynamic.ts` にコピーしてください
 
 ## 利用可能なスクリプト
 

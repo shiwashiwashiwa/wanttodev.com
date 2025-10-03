@@ -32,7 +32,6 @@ export default function Admin() {
     industry: "",
     technologies: [],
     category: [],
-    // thumbnail: "", // 自動生成されるため削除
     details: {
       overview: [],
       challenge: [],
@@ -333,34 +332,31 @@ export default function Admin() {
             variant="outline"
             onClick={async () => {
               try {
-                // ファイルからデータを強制読み込み
-                const response = await fetch("/works-dynamic.json");
-                if (response.ok) {
-                  const fileData = await response.json();
-                  console.log(
-                    "📁 ファイルから読み込んだデータ:",
-                    fileData.length,
-                    "件"
-                  );
-                  // ローカルストレージをクリアしてファイルデータを設定
-                  localStorage.removeItem("works-data-backup");
-                  localStorage.setItem(
-                    "works-data-backup",
-                    JSON.stringify(fileData)
-                  );
-                  console.log(
-                    "✅ ファイルデータでローカルストレージを更新しました"
-                  );
-                  window.location.reload();
-                } else {
-                  console.error("❌ ファイルの読み込みに失敗しました");
-                }
+                // TypeScriptファイルからデータを強制読み込み
+                const { worksDynamicData } = await import(
+                  "../data/works-dynamic"
+                );
+                console.log(
+                  "📁 TypeScriptファイルから読み込んだデータ:",
+                  worksDynamicData.length,
+                  "件"
+                );
+                // ローカルストレージをクリアしてファイルデータを設定
+                localStorage.removeItem("works-data-backup");
+                localStorage.setItem(
+                  "works-data-backup",
+                  JSON.stringify(worksDynamicData)
+                );
+                console.log(
+                  "✅ TypeScriptファイルデータでローカルストレージを更新しました"
+                );
+                window.location.reload();
               } catch (error) {
                 console.error("❌ エラーが発生しました:", error);
               }
             }}
           >
-            ファイルから同期
+            TypeScriptファイルから同期
           </Button>
           <Button
             variant="outline"

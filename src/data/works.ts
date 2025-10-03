@@ -37,6 +37,7 @@ export const TECHNOLOGIES = [
   "GitHub",
   "Netlify",
   "Vercel",
+  "Stripe",
 ] as const;
 
 export type Technology = (typeof TECHNOLOGIES)[number];
@@ -52,7 +53,7 @@ export interface MediaItem {
 export interface Works {
   id: number;
   title: string;
-  date: string; // YYYY.MM 形式
+  date: string; // YYYY.MM
   role: string;
   client: string;
   industry: string;
@@ -87,7 +88,6 @@ export function validateWorksData(data: any): data is Works {
     typeof data.industry === "string" &&
     Array.isArray(data.technologies) &&
     Array.isArray(data.category) &&
-    // thumbnailは自動生成されるため、バリデーションから除外
     typeof data.details === "object" &&
     Array.isArray(data.details.overview) &&
     Array.isArray(data.details.challenge) &&
