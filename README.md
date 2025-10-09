@@ -315,3 +315,4 @@ fetch("/src/scripts/migrateData.js")
   ※画像１枚あたり 150KB 以下が理想（超高解像度でも 500KB 以内に抑える）
 
   ② 挙動確認用の動画
+  iMoveで拡張子をmov→mp4に変更
