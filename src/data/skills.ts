@@ -67,5 +67,6 @@ export const marketingSkills: Skill[] = [
     isSquare: false,
   },
   { name: "Google Ads", image: "Google-Ads.png", isSquare: false },
+  { name: "Looker Studio", image: "", },
   // { name: "Google Tag Manager", image: "", isSquare: false },
 ];

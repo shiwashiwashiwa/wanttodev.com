@@ -99,6 +99,11 @@ export function useWorksData() {
     await saveWorks(worksData);
   };
 
+  // 特定の作品を取得
+  const getWork = (id: number): Works | undefined => {
+    return works.find((work) => work.id === id);
+  };
+
   return {
     works,
     isLoading,
@@ -107,5 +112,6 @@ export function useWorksData() {
     updateWork,
     deleteWork,
     resetWorks,
+    getWork,
   };
 }

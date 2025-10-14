@@ -304,15 +304,15 @@ fetch("/src/scripts/migrateData.js")
 
 ## 必要素材
 
-- Works ページ
-  ① 画像（webp 形式）
-  ・fullpage : PC サイズ：w 1280(2560)px × h auto 　/　 SP サイズ：w 400(800)px × h auto）
-  ・thumbnail : W 1280px × h 800px（8:5）
-  ・pc（３枚） : h 1280px × w 2800px
-  ・mobile（３枚）
-  ・wire : W 1280px × h 720px
+### Works ページ
+  #### ① 画像（webp 形式）
+  - **fullpage** : PC サイズ：w 1280(2560)px × h auto 　/　 SP サイズ：w 400(800)px × h auto）
+  - **thumbnail(1枚)** : W 1280px × h 800px（8:5）
+  - **pc（３枚）** : h 1280px × w 2800px
+  - **mobile（３枚）** : XDで生成
+  - **wire** : W 1280px × h 720px
 
   ※画像１枚あたり 150KB 以下が理想（超高解像度でも 500KB 以内に抑える）
 
-  ② 挙動確認用の動画
-  iMoveで拡張子をmov→mp4に変更
+  #### ② 挙動確認用の動画
+  - iMoveで拡張子をmov → mp4に変更

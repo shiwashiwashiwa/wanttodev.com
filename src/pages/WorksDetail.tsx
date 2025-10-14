@@ -5,6 +5,7 @@ import Cta from "../components/Cta";
 import WorksSwiper from "../components/WorksSwiper";
 import { useWorksData } from "../hooks/useWorksData";
 import { formatDate } from "../lib/utils";
+import { Technology, WorkCategory } from "../data/works";
 
 // ワイヤーフレーム画像を自動生成する関数
 const generateWireImages = (workId: number, workTitle: string) => {
@@ -112,7 +113,7 @@ export default function WorksDetail() {
 
         <div className="space-y-20 md:space-y-40">
           <div className="flex flex-wrap gap-2">
-            {work.category.map((cat, index) => (
+            {work.category.map((cat: WorkCategory, index: number) => (
               <Link
                 key={index}
                 to={`/works?category=${cat}`}
@@ -241,7 +242,7 @@ export default function WorksDetail() {
               </span>
             </h3>
             <div className="md:w-5/6 flex flex-wrap gap-3">
-              {work.technologies.map((tech, index) => (
+              {work.technologies.map((tech: Technology, index: number) => (
                 <span key={index}>{tech}</span>
               ))}
             </div>
@@ -258,7 +259,7 @@ export default function WorksDetail() {
                 </h3>
                 <div className="md:w-5/6 space-y-2">
                   {Array.isArray(work.details.overview) ? (
-                    work.details.overview.map((paragraph, index) => (
+                    work.details.overview.map((paragraph: string, index: number) => (
                       <p key={index}>{paragraph}</p>
                     ))
                   ) : (
@@ -276,7 +277,7 @@ export default function WorksDetail() {
                 </h3>
                 <div className="md:w-5/6 space-y-2">
                   {Array.isArray(work.details.challenge) ? (
-                    work.details.challenge.map((paragraph, index) => (
+                    work.details.challenge.map((paragraph: string, index: number) => (
                       <p key={index}>{paragraph}</p>
                     ))
                   ) : (
@@ -294,7 +295,7 @@ export default function WorksDetail() {
                 </h3>
                 <div className="md:w-5/6 space-y-2">
                   {Array.isArray(work.details.solution) ? (
-                    work.details.solution.map((paragraph, index) => (
+                    work.details.solution.map((paragraph: string, index: number) => (
                       <p key={index}>{paragraph}</p>
                     ))
                   ) : (
@@ -312,7 +313,7 @@ export default function WorksDetail() {
                 </h3>
                 <div className="md:w-5/6 space-y-2">
                   {Array.isArray(work.details.result) ? (
-                    work.details.result.map((paragraph, index) => (
+                    work.details.result.map((paragraph: string, index: number) => (
                       <p key={index}>{paragraph}</p>
                     ))
                   ) : (
@@ -330,7 +331,7 @@ export default function WorksDetail() {
                 </h3>
                 <ul className="grid grid-cols-1 md:grid-cols-2 gap-3">
                   {Array.isArray(work.details.features) ? (
-                    work.details.features.map((feature, index) => (
+                    work.details.features.map((feature: string, index: number) => (
                       <li
                         key={index}
                         className="flex items-center text-gray-100"
