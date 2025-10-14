@@ -29,6 +29,50 @@ const generateWireImages = (workId: number, workTitle: string) => {
   return wireImages;
 };
 
+// PC画像を生成する関数
+const generatePcImages = (workId: number, workTitle: string) => {
+  const pcImages = [];
+  let index = 1;
+
+  // 最大3個まで検索（pc01.webp から pc03.webp まで）
+  while (index <= 3) {
+    const pcNumber = index.toString().padStart(2, "0");
+    const imagePath = `/images/works/${workId}/pc${pcNumber}.webp`;
+
+    pcImages.push({
+      type: "image" as const,
+      src: imagePath,
+      alt: `${workTitle} - PC ${index}`,
+    });
+
+    index++;
+  }
+
+  return pcImages;
+};
+
+// モバイル画像を生成する関数
+const generateMobileImages = (workId: number, workTitle: string) => {
+  const mobileImages = [];
+  let index = 1;
+
+  // 最大3個まで検索（mobile01.webp から mobile03.webp まで）
+  while (index <= 3) {
+    const mobileNumber = index.toString().padStart(2, "0");
+    const imagePath = `/images/works/${workId}/mobile${mobileNumber}.webp`;
+
+    mobileImages.push({
+      type: "image" as const,
+      src: imagePath,
+      alt: `${workTitle} - Mobile ${index}`,
+    });
+
+    index++;
+  }
+
+  return mobileImages;
+};
+
 // 画像の存在を確認する関数
 const checkImageExists = (src: string): Promise<boolean> => {
   return new Promise((resolve) => {
@@ -47,27 +91,58 @@ export default function WorksDetail() {
   const [wireImages, setWireImages] = useState<
     Array<{ type: "image"; src: string; alt: string }>
   >([]);
+  const [pcImages, setPcImages] = useState<
+    Array<{ type: "image"; src: string; alt: string }>
+  >([]);
+  const [mobileImages, setMobileImages] = useState<
+    Array<{ type: "image"; src: string; alt: string }>
+  >([]);
 
-  // ワイヤーフレーム画像の存在確認
+  // 画像の存在確認
   useEffect(() => {
     if (work) {
       const generatedWireImages = generateWireImages(work.id, work.title);
+      const generatedPcImages = generatePcImages(work.id, work.title);
+      const generatedMobileImages = generateMobileImages(work.id, work.title);
 
       // 各画像の存在を確認
       const checkImages = async () => {
-        const existingImages = [];
+        // ワイヤーフレーム画像の確認
+        const existingWireImages = [];
         for (const wireImg of generatedWireImages) {
           const exists = await checkImageExists(wireImg.src);
           if (exists) {
-            existingImages.push(wireImg);
+            existingWireImages.push(wireImg);
           }
         }
-        setWireImages(existingImages);
+        setWireImages(existingWireImages);
+
+        // PC画像の確認
+        const existingPcImages = [];
+        for (const pcImg of generatedPcImages) {
+          const exists = await checkImageExists(pcImg.src);
+          if (exists) {
+            existingPcImages.push(pcImg);
+          }
+        }
+        setPcImages(existingPcImages);
+
+        // モバイル画像の確認
+        const existingMobileImages = [];
+        for (const mobileImg of generatedMobileImages) {
+          const exists = await checkImageExists(mobileImg.src);
+          if (exists) {
+            existingMobileImages.push(mobileImg);
+          }
+        }
+        setMobileImages(existingMobileImages);
       };
 
       checkImages();
     } else {
       setWireImages([]);
+      setPcImages([]);
+      setMobileImages([]);
     }
   }, [work]);
 
@@ -133,54 +208,34 @@ export default function WorksDetail() {
           </div>
 
           {/* PC image */}
-          <div className="flex flex-row gap-2 md:gap-10">
-            <div>
-              <img
-                src={`/images/works/${work.id}/pc01.webp`}
-                className="object-cover"
-                alt={work.title}
-              />
+          {pcImages.length > 0 && (
+            <div className="flex flex-row gap-2 md:gap-10">
+              {pcImages.map((pcImg, index) => (
+                <div key={index}>
+                  <img
+                    src={pcImg.src}
+                    className="object-cover"
+                    alt={pcImg.alt}
+                  />
+                </div>
+              ))}
             </div>
-            <div>
-              <img
-                src={`/images/works/${work.id}/pc02.webp`}
-                className="object-cover"
-                alt={work.title}
-              />
-            </div>
-            <div>
-              <img
-                src={`/images/works/${work.id}/pc03.webp`}
-                className="object-cover"
-                alt={work.title}
-              />
-            </div>
-          </div>
+          )}
 
           {/* mobile image */}
-          <div className="flex flex-row gap-2 md:gap-10">
-            <div>
-              <img
-                src={`/images/works/${work.id}/mobile01.webp`}
-                className="object-cover"
-                alt={work.title}
-              />
+          {mobileImages.length > 0 && (
+            <div className="flex flex-row gap-2 md:gap-10">
+              {mobileImages.map((mobileImg, index) => (
+                <div key={index}>
+                  <img
+                    src={mobileImg.src}
+                    className="object-cover"
+                    alt={mobileImg.alt}
+                  />
+                </div>
+              ))}
             </div>
-            <div>
-              <img
-                src={`/images/works/${work.id}/mobile02.webp`}
-                className="object-cover"
-                alt={work.title}
-              />
-            </div>
-            <div>
-              <img
-                src={`/images/works/${work.id}/mobile03.webp`}
-                className="object-cover"
-                alt={work.title}
-              />
-            </div>
-          </div>
+          )}
 
           {/* wire image */}
           {wireImages.length > 0 && (
