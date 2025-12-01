@@ -1,12 +1,9 @@
-# wanttodev.com - ポートフォリオサイト
-
-React と TypeScript を使用して構築された個人ポートフォリオサイトです。  
-[Create React App](https://github.com/facebook/create-react-app)をベースとして開発されています。
+# ポートフォリオサイト
 
 ## プロジェクト概要
 
-このプロジェクトは、私の技術スキルと実績を紹介するためのポートフォリオサイトです。  
-モダンな Web 技術を活用し、レスポンシブデザインとユーザビリティを重視した設計となっています。
+React と TypeScript を使用して構築された個人ポートフォリオサイトです。  
+[Create React App](https://github.com/facebook/create-react-app)をベースとして開発されています。
 
 ## 技術スタック
 
@@ -298,19 +295,20 @@ fetch("/src/scripts/migrateData.js")
 - [ ] パフォーマンスのさらなる最適化
 - [ ] データベース連携（本格運用時）
 
-## ライセンス
-
-このプロジェクトは MIT ライセンスの下で公開されています。
-
 ## 必要素材
 
 ### Works ページ
   #### ① 画像（webp 形式）
   - **fullpage** : PC サイズ：w 1280(2560)px × h auto 　/　 SP サイズ：w 400(800)px × h auto）
+    - 命名規則：`public/images/works/番号/fullpage/{ページ名}-{pc|sp}.png`（例：`top-pc.png`, `top-sp.png`）
   - **thumbnail(1枚)** : W 1280px × h 800px（8:5）
+    - 命名規則：`public/images/works/番号/thumbnail.webp`
   - **pc（３枚）** : h 1280px × w 2800px
+    - 命名規則：`public/images/works/番号/pc01.webp`, `pc02.webp`, `pc03.webp`
   - **mobile（３枚）** : XDで生成
+    - 命名規則：`public/images/works/番号/mobile01.webp`, `mobile02.webp`, `mobile03.webp`
   - **wire** : W 1280px × h 720px
+    - 命名規則：`public/images/works/番号/wire01.webp`, `wire02.webp`（複数枚ある場合は連番で増やす）
 
   ※画像１枚あたり 150KB 以下が理想（超高解像度でも 500KB 以内に抑える）
 
