@@ -21,7 +21,6 @@ React と TypeScript を使用して構築された個人ポートフォリオ�
 wanttodev.com/
 ├── public/                    # 静的ファイル
 │   ├── images/               # 画像ファイル
-│   │   ├── blog/            # ブログ用画像
 │   │   ├── logo/            # ロゴ・アイコン画像
 │   │   └── works/           # 作品画像
 │   ├── videos/              # 動画ファイル
@@ -29,25 +28,6 @@ wanttodev.com/
 │   └── ...                  # その他の静的ファイル
 ├── src/                      # ソースコード
 │   ├── components/          # 再利用可能なReactコンポーネント
-│   │   ├── blog/           # ブログ機能関連コンポーネント
-│   │   │   ├── templates/  # ブログ記事テンプレート
-│   │   │   │   ├── CaseStudyTemplate.tsx
-│   │   │   │   ├── ComparisonTemplate.tsx
-│   │   │   │   ├── GuideTemplate.tsx
-│   │   │   │   ├── TechnicalTemplate.tsx
-│   │   │   │   └── TemplateFactory.tsx
-│   │   │   ├── BlogArticleLayout.tsx
-│   │   │   ├── BlogHeader.tsx
-│   │   │   ├── BlogList.tsx
-│   │   │   ├── Breadcrumb.tsx
-│   │   │   ├── CategoryList.tsx
-│   │   │   ├── Date.tsx
-│   │   │   ├── DynamicSections.tsx
-│   │   │   ├── RandomArticles.tsx
-│   │   │   ├── RelatedPost.tsx
-│   │   │   ├── Section.tsx
-│   │   │   ├── TableOfContents.tsx
-│   │   │   └── Tag.tsx
 │   │   ├── BasicAuth.tsx    # 認証コンポーネント
 │   │   ├── Button.tsx       # ボタンコンポーネント
 │   │   ├── ColorPalette.tsx # カラーパレット
@@ -66,15 +46,12 @@ wanttodev.com/
 │   ├── pages/               # ページコンポーネント
 │   │   ├── About.tsx        # 自己紹介ページ
 │   │   ├── Admin.tsx        # 管理画面
-│   │   ├── Blog.tsx         # ブログ一覧ページ
-│   │   ├── BlogDetail.tsx   # ブログ詳細ページ
 │   │   ├── Home.tsx         # トップページ
 │   │   ├── Lab.tsx          # ラボページ
 │   │   ├── PrivacyPolicy.tsx # プライバシーポリシー
 │   │   ├── Works.tsx        # 作品紹介ページ
 │   │   └── WorksDetail.tsx  # 作品詳細ページ
 │   ├── data/                # データファイル
-│   │   ├── blog.ts          # ブログ記事データ（静的）
 │   │   ├── faq.ts           # FAQデータ（静的）
 │   │   ├── main.ts          # メインデータ（静的）
 │   │   ├── skills.ts        # スキルデータ（静的）
@@ -110,7 +87,6 @@ wanttodev.com/
 ## 主な機能
 
 - **レスポンシブデザイン**: モバイル・タブレット・デスクトップに対応
-- **ブログ機能**: 動的なブログ記事表示とカテゴリ分類
 - **認証機能**: Works ページに BASIC 認証を実装（24 時間有効期限）
 - **管理画面**: 作品データの動的追加・編集・削除機能
 - **データ管理**: ファイルベースのデータ保存システム
@@ -289,7 +265,6 @@ fetch("/src/scripts/migrateData.js")
 ## 今後の改善予定
 
 - [ ] サーバーサイド API の実装（ファイル自動保存）
-- [ ] ブログ記事の CMS 連携
 - [ ] 多言語対応
 - [ ] PWA 機能の追加
 - [ ] パフォーマンスのさらなる最適化

@@ -5,8 +5,6 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import Works from "./pages/Works";
 import WorksDetail from "./pages/WorksDetail";
-import BlogPage from "./pages/Blog";
-import BlogDetail from "./pages/BlogDetail";
 import Admin from "./pages/Admin";
 import Lab from "./pages/Lab";
 import Footer from "./components/Footer";
@@ -76,8 +74,6 @@ const App: React.FC = () => {
               <Route path="/about" element={<About />} />
               <Route path="/works" element={<Works />} />
               <Route path="/works/:id" element={<WorksDetail />} />
-              <Route path="/blog" element={<BlogPage />} />
-              <Route path="/blog/:slug" element={<BlogDetail />} />
               <Route path="/admin" element={<Admin />} />
               <Route path="/lab" element={<Lab />} />
               <Route path="/privacy-policy" element={<PrivacyPolicy />} />

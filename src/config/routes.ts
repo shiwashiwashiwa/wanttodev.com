@@ -29,11 +29,6 @@ export const routeConfigs: RouteConfig[] = [
     description: "制作実績の詳細情報",
   },
   {
-    path: "/blog",
-    title: "ブログ",
-    description: "技術ブログ",
-  },
-  {
     path: "/privacy-policy",
     title: "プライバシーポリシー",
     description: "プライバシーポリシー",

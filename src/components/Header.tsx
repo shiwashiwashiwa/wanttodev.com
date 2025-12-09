@@ -37,12 +37,6 @@ const Header: React.FC = () => {
             Works
           </Link>
           <Link
-            to="/blog"
-            className="no-underline px-3 md:px-4 py-2 hover:bg-white/20 transition-colors"
-          >
-            Blog
-          </Link>
-          <Link
             to="/about"
             className="no-underline px-3 md:px-4 py-2 hover:bg-white/20 transition-colors"
           >

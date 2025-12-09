@@ -27,21 +27,12 @@ export default function About() {
 
         <div className="mb-40 md:mb-60">
           <div className="flex flex-col md:flex-row gap-8 md:gap-20 mb-20 md:mb-40">
-            <div className="md:w-1/6">
-              <div className="w-20 md:w-24 h-20 md:h-24 mx-auto mb-6 bg-gradient-to-br from-primary-400 to-primary-600 flex items-center justify-center">
-                <span className="text-4xl md:text-5xl font-bold text-gray-800">
-                  M
+              <h3 className="md:w-1/6 text-primary-500 text-nowrap">
+                Manami Shiwa
+                <span className="block text-sm md:text-base text-gray-300">
+                  志波 愛
                 </span>
-              </div>
-            </div>
-            <div className="md:w-5/6">
-              <h3 className="mb-5 md:mb-8">プログラマー / WEBデザイナー</h3>
-              <p>
-                「見た目の美しさ」と「使いやすさ」を両立させたWeb制作をモットーに、デザインから開発までワンストップでご提供。
-                <br />
-                ビジネス課題を理解し、成果につながるクリエイティブをご提案いたします。
-              </p>
-            </div>
+              </h3>
           </div>
 
           <div className="space-y-20 md:space-y-40">
