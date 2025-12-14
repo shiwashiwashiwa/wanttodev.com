@@ -56,7 +56,8 @@ wanttodev.com/
 │   │   ├── main.ts          # メインデータ（静的）
 │   │   ├── skills.ts        # スキルデータ（静的）
 │   │   ├── works.ts         # 作品データ（静的・初期データ）
-│   │   └── works-dynamic.ts # 作品データ（動的・新規追加分）
+│   │   ├── works-dynamic.ts # 作品データ（動的・新規追加分）
+│   │   └── blog.ts          # ブログデータ（静的）
 │   ├── hooks/               # カスタムReactフック
 │   │   ├── useAuth.ts       # 認証フック
 │   │   ├── useDocumentTitle.ts # ドキュメントタイトル
@@ -151,6 +152,7 @@ src/data/
 | **初期データ**     | `src/data/works.ts`         | プロジェクトに含まれる静的データ |
 | **新規追加データ** | `src/data/works-dynamic.ts` | 管理画面で追加された動的データ   |
 | **フォールバック** | ブラウザローカルストレージ  | 一時的な保存場所                 |
+| **ブログデータ**   | `src/data/blog.ts`          | 技術ブログの記事データ（静的）   |
 
 ### ファイル監視と自動同期
 
@@ -220,11 +222,61 @@ fetch("/src/scripts/migrateData.js")
 
 3. ダウンロードされた `works-dynamic.json` を `src/data/` フォルダに配置し、`works-dynamic.ts` として保存
 
+### ブログデータの管理
+
+ブログ記事は `src/data/blog.ts` で管理されています。
+
+#### データ構造
+
+```typescript
+{
+  id: number;                    // 記事ID（連番）
+  title: string;                 // 記事タイトル
+  slug: string;                  // URL用スラッグ（例: "css-grid-flexbox-usage"）
+  date: string;                  // 公開日（YYYY-MM-DD形式）
+  category: BlogCategory[];     // カテゴリ（配列）
+  tags: string[];                // タグ（配列）
+  excerpt: string;               // 記事の抜粋（一覧ページで表示）
+  content: string;               // 記事本文（HTML形式）
+  thumbnail?: string;            // サムネイル画像パス（オプション）
+  technologies?: Technology[];  // 使用技術（オプション）
+  isPublished: boolean;          // 公開フラグ
+  createdAt?: string;            // 作成日時（オプション）
+  updatedAt?: string;            // 更新日時（オプション）
+}
+```
+
+#### 記事の追加方法
+
+1. `src/data/blog.ts` の `blogData` 配列に新しい記事オブジェクトを追加
+2. `id` は既存の記事と重複しない連番を指定
+3. `slug` はURLに使用されるため、英数字とハイフンのみ（例: "my-article-title"）
+4. `content` はHTML形式で記述（コードブロックは `<pre><code>` タグを使用）
+5. `isPublished: true` に設定すると公開される
+
+#### コードブロックの記述方法
+
+コードブロック内のHTMLは自動的にエスケープされますが、`<pre><code>` タグ内では `&lt;` と `&gt;` を使用してください：
+
+```typescript
+content: `
+  <pre><code>&lt;div&gt;
+    &lt;p&gt;コード例&lt;/p&gt;
+  &lt;/div&gt;</code></pre>
+`
+```
+
+#### カテゴリとタグ
+
+- **カテゴリ**: `BLOG_CATEGORIES` で定義された値を使用（"技術", "開発", "デザイン", "学習", "Tips", "その他"）
+- **タグ**: 自由に設定可能（配列形式）
+
 ### 注意事項
 
 - **ブラウザ制限**: ブラウザ環境では直接ファイルシステムに書き込めないため、実際のファイル更新は手動で行う必要があります
 - **本番環境**: 本番環境では、サーバーサイドの API を使用してファイル操作を行うことを推奨します
 - **データ整合性**: データの変更時は、コンソールに表示される JSON データを `works-dynamic.ts` にコピーしてください
+- **ブログデータ**: ブログ記事は静的データとして `blog.ts` に直接記述します。管理画面からの追加機能は現在未実装です
 
 ## 利用可能なスクリプト
 

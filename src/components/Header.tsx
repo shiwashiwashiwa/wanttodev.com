@@ -42,6 +42,12 @@ const Header: React.FC = () => {
           >
             About
           </Link>
+          <Link
+            to="/blog"
+            className="no-underline px-3 md:px-4 py-2 hover:bg-white/20 transition-colors"
+          >
+            Blog
+          </Link>
           {isAuthenticated && (
             <Link
               to="/admin"

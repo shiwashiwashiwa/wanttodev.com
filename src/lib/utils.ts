@@ -32,3 +32,32 @@ export function formatDate(dateString: string): string {
 
   return `${monthName}, ${year}`;
 }
+
+/**
+ * ブログ用の日付文字列を「September 15, 2023」形式に変換する
+ * @param dateString - "2023-09-15" 形式の日付文字列
+ * @returns "September 15, 2023" 形式の日付文字列
+ */
+export function formatBlogDate(dateString: string): string {
+  const [year, month, day] = dateString.split("-");
+  const monthNames = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+
+  const monthIndex = parseInt(month, 10) - 1;
+  const monthName = monthNames[monthIndex];
+  const dayNumber = parseInt(day, 10);
+
+  return `${monthName} ${dayNumber}, ${year}`;
+}

@@ -43,6 +43,16 @@ export const routeConfigs: RouteConfig[] = [
     title: "ラボ",
     description: "実験的なコンテンツやデモ",
   },
+  {
+    path: "/blog",
+    title: "技術ブログ",
+    description: "技術記事や学習内容のアウトプット",
+  },
+  {
+    path: "/blog/:slug",
+    title: "ブログ記事",
+    description: "技術ブログの記事詳細",
+  },
 ];
 
 /**
