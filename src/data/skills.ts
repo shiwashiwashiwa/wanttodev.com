@@ -44,7 +44,6 @@ export const otherSkills: Skill[] = [
   { name: "microCMS", image: "microCMS_dark.svg", isSquare: false },
   { name: "Netlify", image: "netlify-dark.svg", isSquare: false },
   { name: "Vercel", image: "vercel-dark.svg", isSquare: false },
-  { name: "Stripe", image: "" },
   //   { name: "Docker", image: "" },
   //   { name: "AWS", image: "" },
   //   { name: "CI/CD", image: "" },
@@ -53,6 +52,7 @@ export const otherSkills: Skill[] = [
 export const ecSkills: Skill[] = [
   { name: "Shopify", image: "", isSquare: false },
   { name: "ecforce", image: "", isSquare: false },
+  { name: "Stripe", image: "" },
   { name: "Bカート", image: "", isSquare: false },
   { name: "EBISUMART", image: "", isSquare: false },
   // { name: "W2", image: "", isSquare: false },
