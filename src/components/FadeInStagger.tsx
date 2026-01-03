@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, ReactNode } from "react";
 
 const fadeInLeftStyle = `
   @keyframes fadeInLeft {
@@ -39,7 +39,7 @@ const fadeInLeftStyle = `
 `;
 
 interface FadeInStaggerProps {
-  children: React.ReactNode;
+  children: ReactNode;
   delay?: number;
   staggerDelay?: number;
   threshold?: number;

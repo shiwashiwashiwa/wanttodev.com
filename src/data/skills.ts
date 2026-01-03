@@ -16,23 +16,16 @@ export const frontendSkills: Skill[] = [
   { name: "TypeScript", image: "typescript-blue.svg", isSquare: false },
   { name: "Next.js", image: "nextjs-dark.svg", isSquare: false },
   { name: "Astro", image: "astro-dark.svg", isSquare: false },
-  // { name: "Vue.js", image: "" },
 ];
 
 export const backendSkills: Skill[] = [
   { name: "Node.js", image: "nodejs-dark.svg" },
   { name: "PHP", image: "php.svg" },
-  // { name: "Laravel", image: "laravel.svg", isSquare: false },
   { name: "MySQL", image: "mysql.png", isSquare: false },
-  //   { name: "PostgreSQL", image: "" },
-  //   { name: "MongoDB", image: "" },
 ];
 
 export const designSkills: Skill[] = [
   { name: "Figma", image: "figma.svg", isSquare: false },
-  { name: "Adobe XD", image: "" },
-  { name: "Adobe Photoshop", image: "" },
-  { name: "Adobe Illustrator", image: "" },
 ];
 
 export const cmsSkills: Skill[] = [
@@ -44,9 +37,6 @@ export const otherSkills: Skill[] = [
   { name: "microCMS", image: "microCMS_dark.svg", isSquare: false },
   { name: "Netlify", image: "netlify-dark.svg", isSquare: false },
   { name: "Vercel", image: "vercel-dark.svg", isSquare: false },
-  //   { name: "Docker", image: "" },
-  //   { name: "AWS", image: "" },
-  //   { name: "CI/CD", image: "" },
 ];
 
 export const ecSkills: Skill[] = [
@@ -55,8 +45,6 @@ export const ecSkills: Skill[] = [
   { name: "Stripe", image: "" },
   { name: "Bカート", image: "", isSquare: false },
   { name: "EBISUMART", image: "", isSquare: false },
-  // { name: "W2", image: "", isSquare: false },
-  // { name: "たまごリピート", image: "", isSquare: false },
 ];
 
 export const marketingSkills: Skill[] = [
@@ -67,6 +55,5 @@ export const marketingSkills: Skill[] = [
     isSquare: false,
   },
   { name: "Google Ads", image: "Google-Ads.png", isSquare: false },
-  { name: "Looker Studio", image: "", },
-  // { name: "Google Tag Manager", image: "", isSquare: false },
+  { name: "Looker Studio", image: "" },
 ];

@@ -280,17 +280,6 @@ export default function WorksDetail() {
             </div>
           </div>
 
-          {/* <div className="flex flex-col md:flex-row gap-8 md:gap-20">
-            <h3 className="md:w-1/6 text-primary-500 text-nowrap">
-              Client
-              <span className="block text-sm md:text-base text-gray-100">
-                クライアント
-              </span>
-            </h3>
-            <div className="md:w-5/6">
-              <span className="text-gray-100">{work.client}</span>
-            </div>
-          </div> */}
 
           <div className="flex flex-col md:flex-row gap-8 md:gap-20">
             <h3 className="md:w-1/6 text-primary-500 text-nowrap">

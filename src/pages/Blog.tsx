@@ -42,10 +42,10 @@ export default function Blog() {
 
         <div>
           <div className="flex flex-wrap gap-2 md:gap-3 mb-16 md:mb-20">
-            {["すべて", ...BLOG_CATEGORIES].map((category) => (
+            {(["すべて", ...BLOG_CATEGORIES] as const).map((category) => (
               <button
                 key={category}
-                onClick={() => setSelectedCategory(category as BlogCategory | "すべて")}
+                onClick={() => setSelectedCategory(category)}
                 className={`text-xs md:text-sm px-3 md:px-5 py-1 md:py-1.5 rounded-full transition-colors ${
                   selectedCategory === category
                     ? "bg-primary-500 hover:bg-primary-600"

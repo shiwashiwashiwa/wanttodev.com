@@ -1,10 +1,9 @@
-import React from "react";
 import { mainData } from "../data/main";
 import { Link } from "react-router-dom";
 import { Button } from "../components/Button";
 import { useDocumentTitle } from "../hooks/useDocumentTitle";
 
-const PrivacyPolicy: React.FC = () => {
+const PrivacyPolicy = () => {
   useDocumentTitle("プライバシーポリシー");
 
   return (
@@ -154,13 +153,6 @@ const PrivacyPolicy: React.FC = () => {
 
             <table className="[&_th]:border-b [&_th]:border-gray-400/50 [&_td]:border-b [&_td]:border-gray-400/50 [&_th]:py-3 [&_td]:py-3 [&_th]:px-3 [&_td]:px-3 [&_th]:md:px-8 [&_td]:md:px-8 [&_th]:text-[0.8em] [&_th]:md:text-[0.9em] [&_td]:text-[0.8em] [&_td]:md:text-[0.9em] [&_th]:font-normal">
               <tbody>
-                {/* <tr>
-                    <th>所在地</th>
-                    <td>
-                      {mainData.companyAddress.postalCode}{" "}
-                      {mainData.companyAddress.location}
-                    </td>
-                  </tr> */}
                 <tr>
                   <th>代表</th>
                   <td>{mainData.representative}</td>
@@ -185,4 +177,3 @@ const PrivacyPolicy: React.FC = () => {
 };
 
 export default PrivacyPolicy;
-export {};

@@ -1,7 +1,6 @@
-import React from "react";
 import { mainData } from "../data/main";
 
-const Cta: React.FC = () => {
+const Cta = () => {
   return (
     <section className="container max-w-6xl mt-10 md:mt-40">
       <div className="bg-white/10 px-5 xs:px-10 lg:px-20 xl:px-32 pt-14 md:pt-20 pb-14 md:pb-20 mb-10 md:mb-20">

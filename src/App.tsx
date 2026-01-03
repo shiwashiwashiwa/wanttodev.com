@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import Header from "./components/Header";
 import Home from "./pages/Home";
@@ -23,7 +23,7 @@ declare global {
   }
 }
 
-const AppContent: React.FC = () => {
+const AppContent = () => {
   const vantaRef = useRef<HTMLDivElement>(null);
   const location = useLocation();
   const isHomePage = location.pathname === "/";
@@ -95,7 +95,7 @@ const AppContent: React.FC = () => {
   );
 };
 
-const App: React.FC = () => {
+const App = () => {
   return (
     <Router>
       <AppContent />

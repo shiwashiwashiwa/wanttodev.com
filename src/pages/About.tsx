@@ -34,7 +34,6 @@ export default function About() {
   const currentYear = new Date().getFullYear();
   const reiwaYear = useReiwaYear();
 
-  // スキルグループの定義
   const skillGroups = [
     { title: "フロントエンド", skills: frontendSkills },
     { title: "バックエンド", skills: backendSkills },
@@ -55,7 +54,6 @@ export default function About() {
 
         <div className="mb-40 md:mb-60">
           <div className="space-y-20 md:space-y-40">
-            {/* Name Section */}
             <AboutSection title="Name" titleJa="名前">
               <h3 className="text-nowrap">
                 Manami Shiwa
@@ -65,7 +63,6 @@ export default function About() {
               </h3>
             </AboutSection>
 
-            {/* Career Section */}
             <AboutSection title="Career" titleJa="経歴">
               <div className="space-y-10 md:space-y-16">
                 {careerData.map((career, index) => (
@@ -101,7 +98,6 @@ export default function About() {
               </div>
             </AboutSection>
 
-            {/* Skill Section */}
             <AboutSection title="Skill" titleJa="スキル" className="text-nowrap">
               <div className="space-y-14 md:space-y-28">
                 {skillGroups.map((group, index) => (
@@ -114,7 +110,6 @@ export default function About() {
               </div>
             </AboutSection>
 
-            {/* Experience Section */}
             <AboutSection title="Experience" titleJa="経験年数">
               <div className="space-y-6">
                 <AboutInfoBox title="主要技術スタック">
@@ -135,7 +130,6 @@ export default function About() {
               </div>
             </AboutSection>
 
-            {/* Team Work Section */}
             <AboutSection title="Team Work" titleJa="チーム開発">
               <div className="space-y-4">
                 <p className="whitespace-pre-line">{teamWorkDescription}</p>
@@ -152,7 +146,6 @@ export default function About() {
               </div>
             </AboutSection>
 
-            {/* Problem Solving Section */}
             <AboutSection title="Problem Solving" titleJa="問題解決">
               <div className="space-y-6">
                 <p className="whitespace-pre-line">
@@ -184,7 +177,6 @@ export default function About() {
               </div>
             </AboutSection>
 
-            {/* Links Section */}
             <AboutSection title="Links" titleJa="リンク">
               <div>
                 <div className="flex flex-wrap gap-4 md:gap-6">
@@ -193,7 +185,7 @@ export default function About() {
                       key={index}
                       name={link.name}
                       url={link.url}
-                      iconType={link.icon as "github" | "zenn" | "qiita"}
+                      iconType={link.icon}
                     />
                   ))}
                 </div>
@@ -203,12 +195,10 @@ export default function About() {
               </div>
             </AboutSection>
 
-            {/* Hobby Section */}
             <AboutSection title="Hobby" titleJa="趣味">
               <p className="whitespace-pre-line">{hobbyDescription}</p>
             </AboutSection>
 
-            {/* Books Section */}
             <AboutSection title="Books" titleJa="最近読んだ本">
               <RecentBooks />
             </AboutSection>

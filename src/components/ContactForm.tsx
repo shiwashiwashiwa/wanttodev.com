@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState, ChangeEvent, FormEvent } from "react";
 import { Button } from "./Button";
 
 interface FormData {
@@ -8,7 +8,7 @@ interface FormData {
   message: string;
 }
 
-export const ContactForm: React.FC = () => {
+export const ContactForm = () => {
   const [formData, setFormData] = useState<FormData>({
     name: "",
     email: "",
@@ -21,7 +21,7 @@ export const ContactForm: React.FC = () => {
   >("idle");
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
@@ -30,7 +30,7 @@ export const ContactForm: React.FC = () => {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: FormEvent) => {
     // Netlify Formsは自動的に処理されるため、preventDefaultは呼ばない
     setIsSubmitting(true);
     setSubmitStatus("idle");

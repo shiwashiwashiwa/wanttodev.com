@@ -1,7 +1,6 @@
 "use client";
 
 import { FadeInStagger } from "./FadeInStagger";
-// import { Button } from "./Button";
 
 export function HeroSection() {
   return (
@@ -24,20 +23,6 @@ export function HeroSection() {
             </FadeInStagger>
           </div>
         </div>
-
-        {/* <FadeInStagger delay={1500}>
-          <div className="flex justify-center md:justify-start">
-            <a
-              href={mainData.contact.url}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Button>
-                無料相談・お申し込み
-              </Button>
-            </a>
-          </div>
-        </FadeInStagger> */}
       </div>
     </section>
   );

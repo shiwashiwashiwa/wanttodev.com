@@ -1,4 +1,4 @@
-import React from "react";
+import { ReactNode } from "react";
 
 interface AboutSocialLinkButtonProps {
   name: string;
@@ -14,7 +14,7 @@ export function AboutSocialLinkButton({
   url,
   iconType,
 }: AboutSocialLinkButtonProps) {
-  const iconMap: Record<string, React.ReactNode> = {
+  const iconMap: Record<string, ReactNode> = {
     github: <AboutGitHubIcon />,
     zenn: <AboutZennIcon />,
     qiita: <AboutQiitaIcon />,

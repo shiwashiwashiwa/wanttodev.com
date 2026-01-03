@@ -121,7 +121,7 @@ export const problemSolvingCases: ProblemSolvingCase[] = [
 ];
 
 // ソーシャルリンク（実際のURLに置き換えてください）
-export const socialLinks = [
+export const socialLinks: SocialLink[] = [
   {
     name: "GitHub",
     url: "https://github.com/your-username",
@@ -137,7 +137,7 @@ export const socialLinks = [
     url: "https://qiita.com/your-username",
     icon: "qiita",
   },
-] as const;
+];
 
 // 趣味の説明
 export const hobbyDescription = `新しい技術の学習、個人開発、テックブログを読むこと、読書、カフェオレを飲みながらのコーディングが好きです。

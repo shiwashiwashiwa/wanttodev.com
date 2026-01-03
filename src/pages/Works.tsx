@@ -6,33 +6,12 @@ import { LazyImage } from "../components/LazyImage";
 import BasicAuth from "../components/BasicAuth";
 import { useAuth } from "../hooks/useAuth";
 import { useWorksData } from "../hooks/useWorksData";
-// import { ColorPalette } from "../components/ColorPalette";
 
 export default function Works() {
   const { isAuthenticated, isLoading, login, logout } = useAuth();
   const { works, isLoading: dataLoading } = useWorksData();
   const [showAuthModal, setShowAuthModal] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState("すべて");
-
-  // デバッグ用のログ
-  console.log("🔍 Works コンポーネント - データ状態:", {
-    works: works.length,
-    dataLoading,
-    isAuthenticated,
-    isLoading,
-  });
-
-  // データの詳細をログ出力
-  if (works.length > 0) {
-    console.log(
-      "📊 読み込まれた作品データ:",
-      works.map((work) => ({
-        id: work.id,
-        title: work.title,
-        category: work.category,
-      }))
-    );
-  }
 
   const allCategories = Array.from(
     new Set(works.flatMap((work) => work.category))
@@ -79,7 +58,6 @@ export default function Works() {
 
   return (
     <div className="flex min-h-screen flex-col relative">
-      {/* <ColorPalette/> */}
       <section className="container max-w-6xl py-10 sm:py-20">
         <div className="flex justify-between items-center mb-8">
           <h2>
@@ -121,7 +99,7 @@ export default function Works() {
                 .filter(
                   (work) =>
                     selectedCategory === "すべて" ||
-                    work.category.includes(selectedCategory as any)
+                    work.category.includes(selectedCategory)
                 )
                 .map((work) => (
                   <Link

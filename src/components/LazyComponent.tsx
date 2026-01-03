@@ -1,4 +1,4 @@
-import React, { Suspense, lazy } from 'react';
+import { Suspense, lazy, ComponentType, ReactNode } from 'react';
 
 // 遅延読み込み用のローディングコンポーネント
 const LoadingSpinner = () => (
@@ -9,8 +9,8 @@ const LoadingSpinner = () => (
 
 // 高階コンポーネントでラップした遅延読み込み
 export const withLazyLoading = <P extends object>(
-  Component: React.ComponentType<P>,
-  fallback?: React.ReactNode
+  Component: ComponentType<P>,
+  fallback?: ReactNode
 ) => {
   const LazyComponent = lazy(() => Promise.resolve({ default: Component }));
   

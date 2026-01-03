@@ -1,9 +1,9 @@
-import React from "react";
+import { ReactNode } from "react";
 
 interface AboutSectionProps {
   title: string;
   titleJa: string;
-  children: React.ReactNode;
+  children: ReactNode;
   className?: string;
 }
 

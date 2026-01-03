@@ -1,14 +1,14 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, ReactNode } from "react";
 
 interface VideoScrollAnimationProps {
   videoSrc: string;
-  children: React.ReactNode;
+  children: ReactNode;
   className?: string;
 }
 
-export const VideoScrollAnimation: React.FC<VideoScrollAnimationProps> = ({
+export const VideoScrollAnimation = ({
   videoSrc,
   children,
   className = "",

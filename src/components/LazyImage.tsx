@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, ReactNode } from 'react';
 
 interface LazyImageProps {
   src: string;
@@ -10,7 +10,7 @@ interface LazyImageProps {
   objectFit?: 'cover' | 'contain' | 'fill' | 'none' | 'scale-down';
 }
 
-export const LazyImage: React.FC<LazyImageProps> = ({
+export const LazyImage = ({
   src,
   alt,
   className = '',

@@ -1,8 +1,8 @@
-import React from "react";
+import { ReactNode } from "react";
 
 interface AboutInfoBoxProps {
   title: string;
-  children: React.ReactNode;
+  children: ReactNode;
   className?: string;
 }
 

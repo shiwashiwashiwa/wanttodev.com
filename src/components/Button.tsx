@@ -1,12 +1,10 @@
 "use client";
-import * as React from "react";
-import { useState } from "react";
+import { useState, ReactNode } from "react";
 
 interface ButtonProps {
-  children: React.ReactNode;
-  size?: string;
+  children: ReactNode;
   className?: string;
-  variant?: string;
+  variant?: "default" | "outline";
   onClick?: () => void;
   type?: "button" | "submit" | "reset";
   disabled?: boolean;
@@ -14,9 +12,8 @@ interface ButtonProps {
 
 const Button = ({
   children,
-  size,
   className,
-  variant,
+  variant = "default",
   onClick,
   disabled,
 }: ButtonProps) => {
