@@ -1,10 +1,5 @@
 # ポートフォリオサイト
 
-## プロジェクト概要
-
-React と TypeScript を使用して構築された個人ポートフォリオサイトです。  
-[Create React App](https://github.com/facebook/create-react-app)をベースとして開発されています。
-
 ## 技術スタック
 
 - **フロントエンド**: React 19.1.1, TypeScript 5.9.2

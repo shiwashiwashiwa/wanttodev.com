@@ -6,11 +6,6 @@ export interface Achievement {
   textAfter?: string;
 }
 
-export interface ExperienceItem {
-  technology: string;
-  years: string;
-}
-
 export interface TeamWorkRole {
   description: string;
 }
@@ -58,7 +53,7 @@ export const achievements: Achievement[] = [
     text: "WordPressサイト構築・保守運用（カスタムテーマ開発、プラグイン開発含む）",
   },
   {
-    text: "React/TypeScriptを使用したSPA開発経験",
+    text: "React/TypeScriptを使用したSPA個人開発経験",
   },
   {
     text: "SEO対策・Google Analytics/Ads設定によるマーケティング施策",
