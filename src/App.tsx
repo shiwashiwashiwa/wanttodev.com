@@ -28,7 +28,8 @@ const AppContent = () => {
   const location = useLocation();
   const isHomePage = location.pathname === "/";
   const isWorksPage = location.pathname === "/works";
-  const shouldUseHScreen = isHomePage || isWorksPage;
+  const isAdminPage = location.pathname === "/admin";
+  const shouldUseHScreen = isHomePage || isWorksPage || isAdminPage;
   
   // パフォーマンス監視を有効化
   usePerformanceMonitor();

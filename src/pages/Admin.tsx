@@ -48,6 +48,16 @@ export default function Admin() {
     isVisible: true,
   });
 
+  // 認証されていない場合にスクロールを無効化
+  useEffect(() => {
+    if (!isAuthenticated && !isLoading && !dataLoading) {
+      document.body.style.overflow = "hidden";
+      return () => {
+        document.body.style.overflow = "";
+      };
+    }
+  }, [isAuthenticated, isLoading, dataLoading]);
+
   // フォームが表示されたときに自動スクロール
   useEffect(() => {
     if (showForm && formRef.current) {
@@ -71,7 +81,7 @@ export default function Admin() {
 
   if (!isAuthenticated) {
     return (
-      <div className="flex items-center justify-center min-h-screen flex-col relative">
+      <div className="flex items-center justify-center h-full flex-col relative overflow-hidden">
         <div className="text-center">
           <h2>
             ADMIN
