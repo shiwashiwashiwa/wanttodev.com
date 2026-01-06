@@ -70,6 +70,16 @@ export const worksDynamicData: Works[] = [
           src: "/images/works/1/video02.mp4",
           alt: "作品1の動画02",
         },
+        {
+          type: "video",
+          src: "/images/works/1/video03.mp4",
+          alt: "作品1の動画03",
+        },
+        {
+          type: "video",
+          src: "/images/works/1/video04.mp4",
+          alt: "作品1の動画04",
+        },
       ],
     },
     isVisible: true,

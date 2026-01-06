@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { Button } from "../components/Button";
 import Cta from "../components/Cta";
-import WorksSwiper from "../components/WorksSwiper";
+// import WorksSwiper from "../components/WorksSwiper";
 import { LazyImage } from "../components/LazyImage";
 import { useWorksData } from "../hooks/useWorksData";
 import { formatDate } from "../lib/utils";
@@ -163,7 +163,6 @@ export default function WorksDetail() {
       <div className="flex min-h-screen flex-col relative">
         <section className="container max-w-6xl py-10 sm:py-20">
           <div className="text-center">
-            <h1 className="text-4xl font-bold mb-4">作品が見つかりません</h1>
             <p className="text-gray-300 mb-8">指定された作品は存在しません。</p>
             <Link to="/works">
               <Button variant="outline">制作実績一覧に戻る</Button>
@@ -215,9 +214,10 @@ export default function WorksDetail() {
             {work.title}
           </h2>
 
-          <div className="!mt-10 md:!mt-20">
+          {/* 動画スライダー */}
+          {/* <div className="!mt-10 md:!mt-20">
             <WorksSwiper />
-          </div>
+          </div> */}
 
           {/* PC image */}
           {pcImages.length > 0 && (

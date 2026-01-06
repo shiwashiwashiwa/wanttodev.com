@@ -30,6 +30,7 @@ export const TECHNOLOGIES = [
   "WordPress",
   "Shopify",
   "Tailwind CSS",
+  "Bootstrap",
   "Sass",
   "Figma",
   "Adobe XD",

@@ -4,7 +4,6 @@ export const BLOG_CATEGORIES = [
   "開発",
   "デザイン",
   "学習",
-  "Tips",
   "その他",
 ] as const;
 
@@ -66,7 +65,7 @@ export const blogData: BlogPost[] = [
     title: "セマンティックHTMLとARIA属性",
     slug: "html5-semantic-elements-accessibility",
     date: "2024-12-15",
-    category: ["技術", "Tips"],
+    category: ["技術", ],
     tags: ["HTML5", "アクセシビリティ", "ARIA", "メモ"],
     excerpt: "セマンティック要素とARIA属性の組み合わせ方。フォームや動的コンテンツの実装パターン。",
     content: `
@@ -218,7 +217,7 @@ export const blogData: BlogPost[] = [
         <li>フォームのエラーはrole="alert" + aria-live="polite"</li>
       </ul>
     `,
-    isPublished: true,
+    isPublished: false,
     technologies: ["HTML5", "ARIA", "WCAG"],
     createdAt: "2024-12-15T00:00:00Z",
     updatedAt: "2024-12-15T00:00:00Z",
@@ -441,7 +440,7 @@ SELECT * FROM table1 LEFT JOIN table2 ON table1.id = table2.id;</code></pre>
         <li>監視で障害を早期発見、ログで原因分析</li>
       </ul>
     `,
-    isPublished: true,
+    isPublished: false,
     technologies: ["基本情報技術者", "データベース", "アルゴリズム", "セキュリティ"],
     createdAt: "2025-01-08T00:00:00Z",
     updatedAt: "2025-01-08T00:00:00Z",
@@ -451,7 +450,7 @@ SELECT * FROM table1 LEFT JOIN table2 ON table1.id = table2.id;</code></pre>
     title: "HTMLパフォーマンス最適化",
     slug: "html-performance-optimization-resource-hints",
     date: "2024-12-10",
-    category: ["技術", "Tips"],
+    category: ["技術",],
     tags: ["HTML", "パフォーマンス", "最適化", "メモ"],
     excerpt: "リソースヒント、画像最適化、フォント読み込みの実装パターン。",
     content: `
@@ -588,7 +587,7 @@ SELECT * FROM table1 LEFT JOIN table2 ON table1.id = table2.id;</code></pre>
         <li>defer > async（実行順序が保証される）</li>
       </ul>
     `,
-    isPublished: true,
+    isPublished: false,
     technologies: ["HTML5", "Performance", "Resource Hints"],
     createdAt: "2024-12-10T00:00:00Z",
     updatedAt: "2024-12-10T00:00:00Z",
@@ -867,7 +866,7 @@ SELECT * FROM table1 LEFT JOIN table2 ON table1.id = table2.id;</code></pre>
         <li>Mutation Observerは大量の変更には向かない（パフォーマンス注意）</li>
       </ul>
     `,
-    isPublished: true,
+    isPublished: false,
     technologies: ["HTML5", "Web Components", "Custom Elements", "Shadow DOM"],
     createdAt: "2024-12-05T00:00:00Z",
     updatedAt: "2024-12-05T00:00:00Z",
@@ -990,7 +989,7 @@ SELECT * FROM table1 LEFT JOIN table2 ON table1.id = table2.id;</code></pre>
         <li>Flexboxのflex: 1 は gridの1fr に相当</li>
       </ul>
     `,
-    isPublished: true,
+    isPublished: false,
     technologies: ["CSS", "Grid", "Flexbox"],
     createdAt: "2024-12-20T00:00:00Z",
     updatedAt: "2024-12-20T00:00:00Z",
@@ -1000,7 +999,7 @@ SELECT * FROM table1 LEFT JOIN table2 ON table1.id = table2.id;</code></pre>
     title: "Tailwind CSS上級テクニック",
     slug: "tailwind-css-advanced-techniques",
     date: "2024-12-25",
-    category: ["技術", "Tips"],
+    category: ["技術", ],
     tags: ["Tailwind CSS", "CSS", "効率化", "メモ"],
     excerpt: "Tailwind CSSの上級テクニック。カスタムクラス、@apply、arbitrary values、レスポンシブ、ダークモードなどの実践的な使い方。",
     content: `
@@ -1532,7 +1531,7 @@ console.log(userName); // 'John'</code></pre>
     title: "JavaScriptで作る簡単なアニメーション",
     slug: "javascript-simple-animations",
     date: "2024-12-30",
-    category: ["技術", "Tips"],
+    category: ["技術", ],
     tags: ["JavaScript", "アニメーション", "CSS", "初心者", "メモ"],
     excerpt: "JavaScriptで実装できる簡単なアニメーション。フェードイン、スライド、スクロールアニメーションなどの実装方法。",
     content: `
@@ -2541,7 +2540,7 @@ function Counter() {
         <li>HTTP/2、HTTP/3でパフォーマンス向上</li>
       </ul>
     `,
-    isPublished: true,
+    isPublished: false,
     technologies: ["ネットワーク", "HTTP", "TCP/IP"],
     createdAt: "2025-01-05T00:00:00Z",
     updatedAt: "2025-01-05T00:00:00Z",

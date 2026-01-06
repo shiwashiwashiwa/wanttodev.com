@@ -36,7 +36,7 @@ export default function BasicAuth({
       localStorage.setItem("works_auth_timestamp", Date.now().toString());
       onAuthSuccess();
     } else {
-      setError("ユーザー名またはパスワードが正しくありません。");
+      setError("userまたはpasswordが正しくありません。");
     }
 
     setIsLoading(false);
@@ -51,7 +51,7 @@ export default function BasicAuth({
               htmlFor="username"
               className="block mb-2"
             >
-              ユーザー名
+              user
             </label>
             <input
               type="text"
@@ -59,7 +59,7 @@ export default function BasicAuth({
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               className="w-full px-4 py-3 bg-gray-800 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
-              placeholder="ユーザー名を入力"
+              placeholder="userを入力"
               required
               disabled={isLoading}
             />
@@ -70,7 +70,7 @@ export default function BasicAuth({
               htmlFor="password"
               className="block mb-2"
             >
-              パスワード
+              password
             </label>
             <input
               type="password"
@@ -78,7 +78,7 @@ export default function BasicAuth({
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               className="w-full px-4 py-3 bg-gray-800 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
-              placeholder="パスワードを入力"
+              placeholder="passwordを入力"
               required
               disabled={isLoading}
             />
@@ -110,10 +110,10 @@ export default function BasicAuth({
           <p className="text-xs text-gray-400 text-center">
             デモ用認証情報:
             <br />
-            ユーザー名:{" "}
+            user:{" "}
             <span className="text-yellow-300">{validCredentials.username}</span>
             <br />
-            パスワード:{" "}
+            password:{" "}
             <span className="text-yellow-300">{validCredentials.password}</span>
           </p>
         </div> */}

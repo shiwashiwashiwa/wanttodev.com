@@ -36,7 +36,7 @@ export default function Blog() {
             <span>技術ブログ</span>
           </h2>
           <p className="text-center mt-4">
-            日頃から学んだ技術や知見をメモ代わりに使用しています。
+            日頃から学んだ技術や知見をメモ用に残しています。
           </p>
         </div>
 

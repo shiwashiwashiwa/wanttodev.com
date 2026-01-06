@@ -13,16 +13,17 @@ export const frontendSkills: Skill[] = [
   { name: "Sass", image: "sass.png", years: 4 },
   { name: "Bootstrap", image: "bootstrap.svg", years: 4 },
   { name: "JavaScript", image: "javascript-badge.svg", years: 4 },
-  { name: "React", image: "react.svg", years: 0.5 },
+  { name: "React", image: "react.svg", years: 1 },
   { name: "TypeScript", image: "typescript-blue.svg", isSquare: false, years: "少しだけ" },
-  { name: "Next.js", image: "nextjs-dark.svg", isSquare: false, years: "少しだけ" },
+  // { name: "Next.js", image: "nextjs-dark.svg", isSquare: false, years: "少しだけ" },
   { name: "Astro", image: "astro-dark.svg", isSquare: false, years: "少しだけ" },
 ];
 
 export const backendSkills: Skill[] = [
-  { name: "Node.js", image: "nodejs-dark.svg", isSquare: false, years: 3 },
+  // { name: "Node.js", image: "nodejs-dark.svg", isSquare: false, years: 3 },
   { name: "PHP", image: "php.svg", isSquare: false, years: 3 },
   { name: "Laravel", image: "laravel.svg", isSquare: false, years: "少しだけ" },
+  { name: "Python", image: "python.svg", isSquare: false, years: "1年未満" },
   { name: "MySQL", image: "mysql.png", isSquare: false, years: 3 },
 ];
 

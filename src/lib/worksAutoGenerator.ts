@@ -1,4 +1,4 @@
-import { Works, WorkCategory, Technology } from "../data/works";
+import { Works, WorkCategory, Technology, MediaItem } from "../data/works";
 
 /**
  * 画像の存在を確認する関数
@@ -11,6 +11,62 @@ const checkImageExists = (src: string): Promise<boolean> => {
     img.src = src;
   });
 };
+
+/**
+ * 動画ファイルの存在を確認する関数
+ */
+const checkVideoExists = (src: string): Promise<boolean> => {
+  return fetch(src, { method: "HEAD" })
+    .then((response) => {
+      // 200-299のステータスコードは成功
+      return response.ok;
+    })
+    .catch(() => {
+      // エラーが発生した場合は存在しないとみなす
+      return false;
+    });
+};
+
+/**
+ * 指定された作品IDの動画ファイルを検出する関数
+ * video01.mp4, video02.mp4, video03.mp4などの番号付き動画ファイルを検出
+ */
+export async function detectVideoFiles(workId: number): Promise<MediaItem[]> {
+  const videos: MediaItem[] = [];
+  const maxVideoNumber = 100; // 最大100個まで検索
+
+  // video01.mp4, video02.mp4などの番号付き動画ファイルを検索
+  const checkPromises: Promise<{ number: number; exists: boolean }>[] = [];
+
+  for (let i = 1; i <= maxVideoNumber; i++) {
+    const videoNumber = i.toString().padStart(2, "0");
+    const videoPath = `/images/works/${workId}/video${videoNumber}.mp4`;
+    
+    checkPromises.push(
+      checkVideoExists(videoPath).then((exists) => ({
+        number: i,
+        exists,
+      }))
+    );
+  }
+
+  const results = await Promise.all(checkPromises);
+
+  // 存在する動画ファイルを番号順にソートして追加
+  results
+    .filter((result) => result.exists)
+    .sort((a, b) => a.number - b.number)
+    .forEach((result) => {
+      const videoNumber = result.number.toString().padStart(2, "0");
+      videos.push({
+        type: "video",
+        src: `/images/works/${workId}/video${videoNumber}.mp4`,
+        alt: `作品${workId}の動画${videoNumber}`,
+      });
+    });
+
+  return videos;
+}
 
 /**
  * public/images/works内の連番フォルダを検出する関数
@@ -102,6 +158,40 @@ export function mergeWorksData(
 }
 
 /**
+ * 既存のworksデータの動画ファイルを自動検出・更新する関数
+ */
+export async function updateVideoFilesInWorks(
+  works: Works[]
+): Promise<Works[]> {
+  console.log("🎬 動画ファイルを自動検出中...");
+
+  const updatedWorks = await Promise.all(
+    works.map(async (work) => {
+      const detectedVideos = await detectVideoFiles(work.id);
+      
+      if (detectedVideos.length > 0) {
+        console.log(
+          `✅ 作品${work.id}: ${detectedVideos.length}個の動画ファイルを検出しました`
+        );
+      } else {
+        console.log(`ℹ️ 作品${work.id}: 動画ファイルが見つかりませんでした`);
+      }
+      
+      // 動画が検出されなかった場合も空の配列を設定して、既存の動画データをクリア
+      return {
+        ...work,
+        mediaData: {
+          ...work.mediaData,
+          videos: detectedVideos,
+        },
+      };
+    })
+  );
+
+  return updatedWorks;
+}
+
+/**
  * フォルダから自動的にworksデータを生成する関数
  */
 export async function autoGenerateWorksData(
@@ -118,7 +208,8 @@ export async function autoGenerateWorksData(
 
   if (detectedFolders.length === 0) {
     console.log("⚠️ worksフォルダが見つかりませんでした");
-    return existingWorks;
+    // フォルダが見つからなくても、既存データの動画ファイルを更新
+    return await updateVideoFilesInWorks(existingWorks);
   }
 
   // 既存のIDを取得
@@ -134,13 +225,12 @@ export async function autoGenerateWorksData(
     }
   }
 
-  if (newWorks.length === 0) {
-    console.log("ℹ️ 新規のworksデータはありませんでした");
-    return existingWorks;
-  }
-
   // 既存データとマージ
-  const mergedWorks = mergeWorksData(existingWorks, newWorks);
+  let mergedWorks = mergeWorksData(existingWorks, newWorks);
+
+  // すべてのworksデータの動画ファイルを自動検出・更新
+  mergedWorks = await updateVideoFilesInWorks(mergedWorks);
+
   console.log(
     `✅ worksデータをマージしました: 合計 ${mergedWorks.length}件`
   );
