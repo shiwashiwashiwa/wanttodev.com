@@ -5,6 +5,8 @@ import { readFromLocalStorage, saveToLocalStorage } from "../lib/fileUtils";
 import { autoGenerateWorksData } from "../lib/worksAutoGenerator";
 
 const STORAGE_KEY = "works-data-backup"; // バックアップ用に変更
+const STORAGE_TIMESTAMP_KEY = "works-data-timestamp"; // タイムスタンプ用
+const CACHE_DURATION = 24 * 60 * 60 * 1000; // 24時間（ミリ秒）
 
 export function useWorksData() {
   const [works, setWorks] = useState<Works[]>([]);
@@ -17,20 +19,38 @@ export function useWorksData() {
         console.log("🔄 データ読み込み開始...");
 
         let loadedWorks: Works[] = [];
+        let shouldAutoGenerate = false;
 
         // まずローカルストレージをチェック
         const backupData = readFromLocalStorage(STORAGE_KEY);
+        const timestamp = localStorage.getItem(STORAGE_TIMESTAMP_KEY);
+        const now = Date.now();
+        const isCacheValid = timestamp && (now - parseInt(timestamp, 10)) < CACHE_DURATION;
+
         console.log("バックアップデータ:", backupData.length, "件");
 
-        if (backupData.length > 0) {
+        if (backupData.length > 0 && isCacheValid) {
           console.log(
-            "💾 ローカルストレージから復元します:",
+            "💾 ローカルストレージから復元します（キャッシュ有効）:",
             backupData.length,
             "件"
           );
           const validData = backupData.filter(validateWorksData);
           console.log("バリデーション後のデータ件数:", validData.length, "件");
           loadedWorks = validData;
+          // キャッシュが有効な場合は自動生成をスキップ
+          shouldAutoGenerate = false;
+        } else if (backupData.length > 0) {
+          console.log(
+            "💾 ローカルストレージから復元します（キャッシュ期限切れ）:",
+            backupData.length,
+            "件"
+          );
+          const validData = backupData.filter(validateWorksData);
+          console.log("バリデーション後のデータ件数:", validData.length, "件");
+          loadedWorks = validData;
+          // キャッシュが期限切れの場合は自動生成を実行（軽量版）
+          shouldAutoGenerate = true;
         } else {
           console.log("📋 ローカルストレージにデータがありません");
           console.log("TypeScriptファイルから読み込みます...");
@@ -43,23 +63,35 @@ export function useWorksData() {
             "件"
           );
           loadedWorks = validData;
+          // 初回読み込み時は自動生成を実行
+          shouldAutoGenerate = true;
         }
 
-        // 自動生成機能: public/images/works内のフォルダから自動的にworksデータを生成
-        const mergedWorks = await autoGenerateWorksData(loadedWorks);
+        let mergedWorks = loadedWorks;
+
+        // 自動生成機能: 必要な場合のみ実行
+        if (shouldAutoGenerate) {
+          console.log("🔍 自動生成処理を実行します...");
+          mergedWorks = await autoGenerateWorksData(loadedWorks);
+          
+          // タイムスタンプを保存
+          localStorage.setItem(STORAGE_TIMESTAMP_KEY, now.toString());
+        } else {
+          console.log("⚡ キャッシュが有効なため、自動生成処理をスキップします");
+        }
 
         // データを設定
         setWorks(mergedWorks);
 
-        // 自動生成されたデータがある場合は、ローカルストレージに保存
-        if (mergedWorks.length > loadedWorks.length) {
-          console.log(
-            `🆕 ${mergedWorks.length - loadedWorks.length}件の新規worksデータが自動生成されました`
-          );
+        // 自動生成されたデータがある場合、または初回読み込み時は、ローカルストレージに保存
+        if (mergedWorks.length > loadedWorks.length || backupData.length === 0) {
+          if (mergedWorks.length > loadedWorks.length) {
+            console.log(
+              `🆕 ${mergedWorks.length - loadedWorks.length}件の新規worksデータが自動生成されました`
+            );
+          }
           saveToLocalStorage(STORAGE_KEY, mergedWorks);
-        } else if (backupData.length === 0) {
-          // 初回読み込み時は必ず保存
-          saveToLocalStorage(STORAGE_KEY, mergedWorks);
+          localStorage.setItem(STORAGE_TIMESTAMP_KEY, Date.now().toString());
         }
       } catch (error) {
         console.error("❌ データの読み込みに失敗しました:", error);

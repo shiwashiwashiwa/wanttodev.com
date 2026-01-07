@@ -30,40 +30,65 @@ const checkVideoExists = (src: string): Promise<boolean> => {
 /**
  * 指定された作品IDの動画ファイルを検出する関数
  * video01.mp4, video02.mp4, video03.mp4などの番号付き動画ファイルを検出
+ * 最適化: 連続する失敗が一定数続いたら検索を停止
  */
 export async function detectVideoFiles(workId: number): Promise<MediaItem[]> {
   const videos: MediaItem[] = [];
-  const maxVideoNumber = 100; // 最大100個まで検索
+  const maxVideoNumber = 20; // 最大20個まで検索（100から削減）
+  const maxConsecutiveFailures = 3; // 連続失敗の上限
 
   // video01.mp4, video02.mp4などの番号付き動画ファイルを検索
-  const checkPromises: Promise<{ number: number; exists: boolean }>[] = [];
+  // バッチ処理で並列数を制限（一度に5個ずつ）
+  const batchSize = 5;
+  let consecutiveFailures = 0;
 
-  for (let i = 1; i <= maxVideoNumber; i++) {
-    const videoNumber = i.toString().padStart(2, "0");
-    const videoPath = `/images/works/${workId}/video${videoNumber}.mp4`;
+  for (let batchStart = 1; batchStart <= maxVideoNumber; batchStart += batchSize) {
+    const batchEnd = Math.min(batchStart + batchSize - 1, maxVideoNumber);
+    const checkPromises: Promise<{ number: number; exists: boolean }>[] = [];
+
+    for (let i = batchStart; i <= batchEnd; i++) {
+      const videoNumber = i.toString().padStart(2, "0");
+      const videoPath = `/images/works/${workId}/video${videoNumber}.mp4`;
+      
+      checkPromises.push(
+        checkVideoExists(videoPath).then((exists) => ({
+          number: i,
+          exists,
+        }))
+      );
+    }
+
+    const results = await Promise.all(checkPromises);
     
-    checkPromises.push(
-      checkVideoExists(videoPath).then((exists) => ({
-        number: i,
-        exists,
-      }))
-    );
-  }
-
-  const results = await Promise.all(checkPromises);
-
-  // 存在する動画ファイルを番号順にソートして追加
-  results
-    .filter((result) => result.exists)
-    .sort((a, b) => a.number - b.number)
-    .forEach((result) => {
+    // バッチ内で存在する動画ファイルを処理
+    const existingVideos = results
+      .filter((result) => result.exists)
+      .sort((a, b) => a.number - b.number);
+    
+    const batchHasVideo = existingVideos.length > 0;
+    
+    // 動画が見つかった場合は追加
+    for (const result of existingVideos) {
       const videoNumber = result.number.toString().padStart(2, "0");
       videos.push({
         type: "video",
         src: `/images/works/${workId}/video${videoNumber}.mp4`,
         alt: `作品${workId}の動画${videoNumber}`,
       });
-    });
+    }
+
+    // バッチ内に動画がなかった場合
+    if (!batchHasVideo) {
+      consecutiveFailures += batchSize;
+      // 連続失敗が上限に達したら検索を停止
+      if (consecutiveFailures >= maxConsecutiveFailures * batchSize) {
+        break;
+      }
+    } else {
+      // 成功したらリセット
+      consecutiveFailures = 0;
+    }
+  }
 
   return videos;
 }
@@ -71,34 +96,41 @@ export async function detectVideoFiles(workId: number): Promise<MediaItem[]> {
 /**
  * public/images/works内の連番フォルダを検出する関数
  * サムネイル画像の存在を確認して、有効なフォルダを判定
+ * 最適化: バッチ処理で並列数を制限
  */
 export async function detectWorksFolders(
-  maxId: number = 100
+  maxId: number = 20
 ): Promise<number[]> {
   const detectedFolders: number[] = [];
-  const checkPromises: Promise<boolean>[] = [];
+  const batchSize = 5; // 一度に5個ずつチェック
 
-  // 1からmaxIdまで順番にチェック
-  for (let id = 1; id <= maxId; id++) {
-    // thumbnail.webpとthumbnail.pngの両方をチェック
-    const thumbnailWebpPath = `/images/works/${id}/thumbnail.webp`;
-    const thumbnailPngPath = `/images/works/${id}/thumbnail.png`;
-    
-    checkPromises.push(
-      Promise.all([
-        checkImageExists(thumbnailWebpPath),
-        checkImageExists(thumbnailPngPath)
-      ]).then(([existsWebp, existsPng]) => {
-        if (existsWebp || existsPng) {
-          detectedFolders.push(id);
-        }
-        return existsWebp || existsPng;
-      })
-    );
+  // バッチ処理で並列数を制限
+  for (let batchStart = 1; batchStart <= maxId; batchStart += batchSize) {
+    const batchEnd = Math.min(batchStart + batchSize - 1, maxId);
+    const checkPromises: Promise<boolean>[] = [];
+
+    // バッチ内のIDをチェック
+    for (let id = batchStart; id <= batchEnd; id++) {
+      // thumbnail.webpとthumbnail.pngの両方をチェック
+      const thumbnailWebpPath = `/images/works/${id}/thumbnail.webp`;
+      const thumbnailPngPath = `/images/works/${id}/thumbnail.png`;
+      
+      checkPromises.push(
+        Promise.all([
+          checkImageExists(thumbnailWebpPath),
+          checkImageExists(thumbnailPngPath)
+        ]).then(([existsWebp, existsPng]) => {
+          if (existsWebp || existsPng) {
+            detectedFolders.push(id);
+          }
+          return existsWebp || existsPng;
+        })
+      );
+    }
+
+    // バッチごとに並列で画像の存在を確認
+    await Promise.all(checkPromises);
   }
-
-  // 並列で画像の存在を確認
-  await Promise.all(checkPromises);
 
   // 数値順にソート
   return detectedFolders.sort((a, b) => a - b);
@@ -159,6 +191,7 @@ export function mergeWorksData(
 
 /**
  * 既存のworksデータの動画ファイルを自動検出・更新する関数
+ * 最適化: 既に動画データがある場合はスキップ
  */
 export async function updateVideoFilesInWorks(
   works: Works[]
@@ -167,6 +200,12 @@ export async function updateVideoFilesInWorks(
 
   const updatedWorks = await Promise.all(
     works.map(async (work) => {
+      // 既に動画データが存在し、かつ空でない場合はスキップ（パフォーマンス向上）
+      if (work.mediaData.videos && work.mediaData.videos.length > 0) {
+        console.log(`⏭️ 作品${work.id}: 既存の動画データがあるためスキップ`);
+        return work;
+      }
+
       const detectedVideos = await detectVideoFiles(work.id);
       
       if (detectedVideos.length > 0) {
