@@ -1,0 +1,54 @@
+# 依存関係
+node_modules
+/.pnp
+.pnp.js
+
+# 環境変数
+.env*
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# ビルド成果物
+/build
+/dist
+
+# テストカバレッジ
+/coverage
+
+# ログファイル
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# エディタ・IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# キャッシュ
+.cache/
+.parcel-cache/
+.eslintcache
+
+# 一時ファイル・画像処理
+*_temp.*
+*.tmp
+*.temp
+
+# その他
+*.tsbuildinfo
