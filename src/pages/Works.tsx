@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "../components/Button";
 import { ContactForm } from "../components/ContactForm";
@@ -14,9 +14,12 @@ export default function Works() {
   const [showAuthModal, setShowAuthModal] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState<WorkCategory | "すべて">("すべて");
 
-  const allCategories = Array.from(
-    new Set(works.filter((work) => work.isVisible).flatMap((work) => work.category))
-  ).sort();
+  // allCategoriesをメモ化して再計算を防止
+  const allCategories = useMemo(() => {
+    return Array.from(
+      new Set(works.filter((work) => work.isVisible).flatMap((work) => work.category))
+    ).sort();
+  }, [works]);
 
   // 認証が必要な場合の処理
   if (isLoading || dataLoading) {

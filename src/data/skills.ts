@@ -23,7 +23,7 @@ export const backendSkills: Skill[] = [
   // { name: "Node.js", image: "nodejs-dark.svg", isSquare: false, years: 3 },
   { name: "PHP", image: "php.svg", isSquare: false, years: 3 },
   { name: "Laravel", image: "laravel.svg", isSquare: false, years: "少しだけ" },
-  { name: "Python", image: "python.svg", isSquare: false, years: "1年未満" },
+  { name: "Python", image: "https://www.python.org/static/community_logos/python-logo-inkscape.svg", isSquare: false, years: "1年未満" },
   { name: "MySQL", image: "mysql.png", isSquare: false, years: 3 },
 ];
 

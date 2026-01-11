@@ -35,9 +35,9 @@ export function useWorksData() {
             backupData.length,
             "件"
           );
-          const validData = backupData.filter(validateWorksData);
-          console.log("バリデーション後のデータ件数:", validData.length, "件");
-          loadedWorks = validData;
+          // キャッシュが有効な場合はバリデーションをスキップして高速化
+          loadedWorks = backupData as Works[];
+          console.log("バリデーションをスキップ（キャッシュ有効）");
           // キャッシュが有効な場合は自動生成をスキップ
           shouldAutoGenerate = false;
         } else if (backupData.length > 0) {
@@ -46,16 +46,18 @@ export function useWorksData() {
             backupData.length,
             "件"
           );
+          // キャッシュ期限切れの場合のみバリデーションを実行
           const validData = backupData.filter(validateWorksData);
           console.log("バリデーション後のデータ件数:", validData.length, "件");
           loadedWorks = validData;
-          // キャッシュが期限切れの場合は自動生成を実行（軽量版）
-          shouldAutoGenerate = true;
+          // キャッシュが期限切れの場合は自動生成をスキップ（動画検出のみ実行）
+          shouldAutoGenerate = false; // 自動生成をスキップして高速化
         } else {
           console.log("📋 ローカルストレージにデータがありません");
           console.log("TypeScriptファイルから読み込みます...");
 
-          // TypeScriptファイルから直接読み込み
+          // TypeScriptファイルから直接読み込み（バリデーションは最小限に）
+          // 初回のみバリデーションを実行
           const validData = worksDynamicData.filter(validateWorksData);
           console.log(
             "✅ TypeScriptファイルからデータを読み込みました:",
@@ -63,13 +65,13 @@ export function useWorksData() {
             "件"
           );
           loadedWorks = validData;
-          // 初回読み込み時は自動生成を実行
-          shouldAutoGenerate = true;
+          // 初回読み込み時は自動生成をスキップ（手動で再スキャン可能）
+          shouldAutoGenerate = false; // 自動生成をスキップして高速化
         }
 
         let mergedWorks = loadedWorks;
 
-        // 自動生成機能: 必要な場合のみ実行
+        // 自動生成機能: 必要な場合のみ実行（現在はスキップして高速化）
         if (shouldAutoGenerate) {
           console.log("🔍 自動生成処理を実行します...");
           mergedWorks = await autoGenerateWorksData(loadedWorks);
@@ -77,28 +79,31 @@ export function useWorksData() {
           // タイムスタンプを保存
           localStorage.setItem(STORAGE_TIMESTAMP_KEY, now.toString());
         } else {
-          console.log("⚡ キャッシュが有効なため、自動生成処理をスキップします");
+          console.log("⚡ 自動生成処理をスキップします（高速化のため）");
         }
 
-        // データを設定
+        // データを設定（UIを先に表示）
         setWorks(mergedWorks);
+        setIsLoading(false); // 早期にローディングを解除
 
         // 自動生成されたデータがある場合、または初回読み込み時は、ローカルストレージに保存
-        if (mergedWorks.length > loadedWorks.length || backupData.length === 0) {
-          if (mergedWorks.length > loadedWorks.length) {
-            console.log(
-              `🆕 ${mergedWorks.length - loadedWorks.length}件の新規worksデータが自動生成されました`
-            );
+        // 非同期で実行してUIのブロッキングを防ぐ
+        setTimeout(() => {
+          if (mergedWorks.length > loadedWorks.length || backupData.length === 0) {
+            if (mergedWorks.length > loadedWorks.length) {
+              console.log(
+                `🆕 ${mergedWorks.length - loadedWorks.length}件の新規worksデータが自動生成されました`
+              );
+            }
+            saveToLocalStorage(STORAGE_KEY, mergedWorks);
+            localStorage.setItem(STORAGE_TIMESTAMP_KEY, Date.now().toString());
           }
-          saveToLocalStorage(STORAGE_KEY, mergedWorks);
-          localStorage.setItem(STORAGE_TIMESTAMP_KEY, Date.now().toString());
-        }
+        }, 0);
       } catch (error) {
         console.error("❌ データの読み込みに失敗しました:", error);
         console.log("初期データを使用します");
         // エラーの場合は初期データを使用
         setWorks(worksData);
-      } finally {
         setIsLoading(false);
       }
     };

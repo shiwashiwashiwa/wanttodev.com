@@ -151,7 +151,7 @@ fetch("/src/scripts/migrateData.js")
   #### ① 画像（webp 形式）
   - **fullpage** : PC サイズ：w 1280(2560)px × h auto 　/　 SP サイズ：w 400(800)px × h auto）
     - 命名規則：`public/images/works/番号/fullpage/{ページ名}-{pc|sp}.png`（例：`top-pc.png`, `top-sp.png`）
-  - **thumbnail(1枚)** : W 1280px × h 800px（8:5）
+  - **thumbnail** : W 1280px × h 800px（8:5）
     - 命名規則：`public/images/works/番号/thumbnail.webp`
   - **pc（３枚）** : h 1280px × w 2800px
     - 命名規則：`public/images/works/番号/pc01.webp`, `pc02.webp`, `pc03.webp`
