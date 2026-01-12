@@ -32,7 +32,7 @@ export interface CareerPeriod {
 export const careerData: CareerPeriod[] = [
   {
     period: "2023年(令和5年) – 現在",
-    description: `プログラマー兼デザイナー兼ディレクターとして、単なる制作に留まらず、UI/UX設計からフロントエンド（HTML/CSS/JS）、バックエンド（PHP/Node.js）までワンストップで実装する開発力を磨く。
+    description: `プログラマー兼デザイナー兼ディレクターとして、単なる制作に留まらず、UI/UX設計からフロントエンド（HTML/CSS/JS）、バックエンド（PHP）までワンストップで実装する開発力を磨く。
     
     <strong>・Web制作:</strong>
     ディレクションからデザイン、実装、運用、マーケティングまで一貫して、コーポレートサイト、EC、LPなど多岐にわたるWeb制作を完遂。
